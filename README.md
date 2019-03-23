@@ -33,8 +33,15 @@ De social media berichten worden met behulp van een cronjob gesynchroniseerd, he
 
 De cronjob bevindt zich in `assets/components/socialmedia/crobjobs/socialmedia.cronjob.php` en moet aangeroepen worden met een `hash` parameter. Deze parameter moet het zelfde zijn als de `socialmedia.cronjob_hash` system setting. Dit om te voorkomen dat `hackers` of dergelijke onbeperkt de cronjob kunnen aanroepen.
 
-**Voorbeeld cronjob**
+**Voorbeeld cronjob:**
 
 ```
 php socialmedia.cronjob_hash --hash=modx5bb37a381b64d2.44295829
-``
+```
+
+## Nieuw in 2.0.0
+
+Sinds 2.0.0 word er gebruik gemaakt van criteria, deze criteria bepaald welke social media berichten worden gesynchroniseerd in de cronjob. Voorheen gingen deze 'criteria' aan de hand van systeem instellingen. De nieuwe manier van criteria kan nu bepaald worden binnen het component. Indien je de juiste rechten hebt (`socialmedia_admin`) dan heb je rechts boven in een knop `Admin weergave`.
+In deze `Admin weergave` kun je de criteria instellen per social media kanaal. Momenteel word `Twitter`, `Pinterest`, `Youtube`, `Facebook`, `Instagram` (voor hoe lang nog?) en `LinkedIn` ondersteund.
+
+Een criteria kan uit bepaalde delen bestaan, een `@` of een `#`. De @ verwijst naar een gebruiker en een # naar een zoekterm. Niet alle social media ondersteund zoeken, soms kun je alleen de eigen berichten opgehaald worden (bijvoorbeeld Instagram).
