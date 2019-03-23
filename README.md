@@ -44,4 +44,20 @@ php socialmedia.cronjob_hash --hash=modx5bb37a381b64d2.44295829
 Sinds 2.0.0 word er gebruik gemaakt van criteria, deze criteria bepaald welke social media berichten worden gesynchroniseerd in de cronjob. Voorheen gingen deze 'criteria' aan de hand van systeem instellingen. De nieuwe manier van criteria kan nu bepaald worden binnen het component. Indien je de juiste rechten hebt (`socialmedia_admin`) dan heb je rechts boven in een knop `Admin weergave`.
 In deze `Admin weergave` kun je de criteria instellen per social media kanaal. Momenteel word `Twitter`, `Pinterest`, `Youtube`, `Facebook`, `Instagram` (voor hoe lang nog?) en `LinkedIn` ondersteund.
 
-Een criteria kan uit bepaalde delen bestaan, een `@` of een `#`. De @ verwijst naar een gebruiker en een # naar een zoekterm. Niet alle social media ondersteund zoeken, soms kun je alleen de eigen berichten opgehaald worden (bijvoorbeeld Instagram).
+Een criteria kan uit bepaalde delen bestaan, een `@` of een `#`. De @ verwijst naar een gebruiker en een # naar een zoekterm. Niet alle social media API\'s ondersteunen deze criteria, soms kun je alleen de berichten van het gemachtigde account opgehaald worden (bijvoorbeeld Instagram). Voor sommige social media API\'s (Youtube) kun je bij voor @ een gebruikersnaam of ID invullen. Om hier onderscheid in te maken kun je dit definieren als `@ID:` of `@USERNAME:`.
+
+**Voorbeeld criteria**
+
+```
+@meneer.de.bruin
+@sterc
+@127284723
+@ID:127284723
+@USERNAME:meneer.de.bruin
+#zoeken
+#sterc
+@me
+@self
+```
+
+`@me` en `@self` zijn gereserveerde criteria en verwijst naar het account waarmee de API gemachtigd is.
