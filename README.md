@@ -9,7 +9,7 @@
 {'!SocialMedia' | snippet : [
     'usePdoTools'   => true,
     'tpl'           => '@FILE elements/chunks/item.chunk.tpl',
-    'tplWrapper'    => '@FILE elements/chunks/wrapper.chunk.tpl',
+    'tplWrapper'    => '@FILE elements/chunks/wrapper.chunk.tpl'
 ]}
 ```
 
@@ -26,3 +26,15 @@
 | tpls | Een JSON object met de templates voor een specifiek social media bericht type. Bijvoorbeeld `{"facebook": "facebookChunk", "twitter": "twitterChunk"}`. |
 | usePdoTools | Indien `true` dan word pdoTools gebruikt voor de tpl's en is fenom mogelijk (ook `@FILE` en `@INLINE` zijn mogelijk zonder pdoTools). Standaard `false`. |
 | usePdoElementsPath | Indien `true` dan worden `@FILE` tpl's gebruikt vanuit de map die in de `pdotools_elements_path` systeem instelling ingesteld is. Anders word het de `core/components/chatbot/` map gebruikt. Standaard `false`. |
+
+## Cronjob
+
+De social media berichten worden met behulp van een cronjob gesynchroniseerd, het beste is om deze cronjoh elke uur te runnen.
+
+De cronjob bevindt zich in `assets/components/socialmedia/crobjobs/socialmedia.cronjob.php` en moet aangeroepen worden met een `hash` parameter. Deze parameter moet het zelfde zijn als de `socialmedia.cronjob_hash` system setting. Dit om te voorkomen dat `hackers` of dergelijke onbeperkt de cronjob kunnen aanroepen.
+
+**Voorbeeld cronjob**
+
+```
+php socialmedia.cronjob_hash --hash=modx5bb37a381b64d2.44295829
+``
