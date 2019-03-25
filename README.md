@@ -54,7 +54,7 @@ Voor instagram moet je gebruik maken van de https://instagram.pixelunion.net/ in
 
 | Setting                    | Omschrijving                                                                 |
 |----------------------------|------------------------------------------------------------------------------|
-| socialmedia.cronjob        | Deze instelling geeft een 'cronjob' melding boven de extra. Indien `Ja` dan wordt melding niet meer getoond. |
+| socialmedia.cronjob        | Deze instelling geeft een 'cronjob' melding boven in het component. Indien `Ja` dan wordt melding niet meer getoond. |
 | socialmedia.cronjob_hash   | Een unieke hash die meegegeven dient met de cronjob als parameter. (zie cronjob) |
 | socialmedia.default_active | Indien `Ja` worden alle social media berichten standaard getoond/geactiveerd. |
 | socialmedia.log_email      | Het e-mail adres waar de 'log' van de cronjob heen gestuurd word. Meerdere e-mail adressen scheiden met een komma. |
