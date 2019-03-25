@@ -69,7 +69,6 @@ Voor instagram moet je gebruik maken van de https://instagram.pixelunion.net/ in
 | socialmedia                | De algemene social media permission, zonder deze permission kan de gebruker het component niet gebruiken. |
 | socialmedia_admin          | De permission om bij de social media admin gedeelte te komen. In deze admin gedeelte kunnen de criteria ingesteld worden voor de social media berichten. |
 
-
 ## Nieuw in 2.0.0
 
 Sinds 2.0.0 word er gebruik gemaakt van criteria, deze criteria bepaald welke social media berichten worden gesynchroniseerd in de cronjob. Voorheen gingen deze 'criteria' aan de hand van systeem instellingen. De nieuwe manier van criteria kan nu bepaald worden binnen het component. Indien je de juiste rechten hebt (`socialmedia_admin`) dan heb je rechts boven in een knop `Admin weergave`.
