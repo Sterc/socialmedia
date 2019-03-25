@@ -62,7 +62,7 @@ Voor instagram moet je gebruik maken van de https://instagram.pixelunion.net/ in
 | socialmedia.log_send       | Indien `Ja` dan word de 'log' van de cronjob verstuurd naar het e-mail adres van `socialmedia.log_email`. Standaard is `Ja`. |
 | socialmedia.remove_emoji   | Indien `Ja` dan worden de Emoji emotions verwijderd uit de gebruikersnaam en content van de social media berichten. Emoji's zijn alleen mogelijk met een `utf8mb4` database karakter set. Standaard is `Ja`. |
 
-## Permission
+## Permissions
 
 | Setting                    | Omschrijving                                                                 |
 |----------------------------|------------------------------------------------------------------------------|
