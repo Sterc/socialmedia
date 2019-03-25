@@ -41,7 +41,7 @@ php socialmedia.cronjob_hash --hash=modx5bb37a381b64d2.44295829
 
 ## Access tokens
 
-De meeste API's maken gebruik van oAuth inlog en spreekt wel voor zich. De access tokens hiervan kunnen gegenereerd worden via https://bitbucket.org/sterc/oauthprovider. 
+De meeste API's maken gebruik van oAuth inlog en spreekt wel voor zich. De access tokens hiervan kunnen gegenereerd worden via https://bitbucket.org/sterc/oauthprovider en kunnen in de system settings ingesteld worden.
 
 **Instagram**
 
