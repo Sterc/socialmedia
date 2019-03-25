@@ -17,15 +17,15 @@
 
 | Parameter                  | Omschrijving                                                                 |
 |----------------------------|------------------------------------------------------------------------------|
-| criteria | De ID van de criteria waarvan de social media berichten getoond dienen te worden. Meerdere ID's scheiden met een komma. Indien leeg worden gewoon alle criteria getoond. Standaard is leeg. |
-| where | De where statement waar de social media berichten aan moeten voldoen. Standaard is `{"active": "1"}`. |
-| sortby | De sortby statement waarop de social media berichten gestorteerd moeten worden. Standaard is `{"created": "DESC"}`. |
-| limit | Het aantal social media berichten wat getoond mag worden. |
-| tpl | De template van een social media bericht. Dit kan een chunknaam, `@FILE` of `@INLINE` zijn. |
-| tplWrapper | De template van de wrapper van de social media berichten. Dit kan een chunknaam, `@FILE` of `@INLINE` zijn. |
-| tpls | Een JSON object met de templates voor een specifiek social media bericht type. Bijvoorbeeld `{"facebook": "facebookChunk", "twitter": "twitterChunk"}`. |
-| usePdoTools | Indien `true` dan word pdoTools gebruikt voor de tpl's en is fenom mogelijk (ook `@FILE` en `@INLINE` zijn mogelijk zonder pdoTools). Standaard `false`. |
-| usePdoElementsPath | Indien `true` dan worden `@FILE` tpl's gebruikt vanuit de map die in de `pdotools_elements_path` systeem instelling ingesteld is. Anders word het de `core/components/socialmedia/` map gebruikt. Standaard `false`. |
+| criteria                   | De ID van de criteria waarvan de social media berichten getoond dienen te worden. Meerdere ID's scheiden met een komma. Indien leeg worden gewoon alle criteria getoond. Standaard is leeg. |
+| where                      | De where statement waar de social media berichten aan moeten voldoen. Standaard is `{"active": "1"}`. |
+| sortby                     | De sortby statement waarop de social media berichten gestorteerd moeten worden. Standaard is `{"created": "DESC"}`. |
+| limit                      | Het aantal social media berichten wat getoond mag worden. |
+| tpl                        | De template van een social media bericht. Dit kan een chunknaam, `@FILE` of `@INLINE` zijn. |
+| tplWrapper                 | De template van de wrapper van de social media berichten. Dit kan een chunknaam, `@FILE` of `@INLINE` zijn. |
+| tpls                       | Een JSON object met de templates voor een specifiek social media bericht type. Bijvoorbeeld `{"facebook": "facebookChunk", "twitter": "twitterChunk"}`. |
+| usePdoTools                | Indien `true` dan word pdoTools gebruikt voor de tpl's en is fenom mogelijk (ook `@FILE` en `@INLINE` zijn mogelijk zonder pdoTools). Standaard `false`. |
+| usePdoElementsPath         | Indien `true` dan worden `@FILE` tpl's gebruikt vanuit de map die in de `pdotools_elements_path` systeem instelling ingesteld is. Anders word het de `core/components/socialmedia/` map gebruikt. Standaard `false`. |
 
 ## Cronjob
 
@@ -43,7 +43,7 @@ php socialmedia.cronjob_hash --hash=modx5bb37a381b64d2.44295829
 
 De meeste API's maken gebruik van oAuth inlog en spreekt wel voor zich. De access tokens hiervan kunnen gegenereerd worden via https://bitbucket.org/sterc/oauthprovider en kunnen in de system settings ingesteld worden.
 
-**Instagram**
+**Instagram:**
 
 Voor instagram moet je gebruik maken van de https://instagram.pixelunion.net/ in combinatie met de volgende keys:
 
@@ -55,12 +55,20 @@ Voor instagram moet je gebruik maken van de https://instagram.pixelunion.net/ in
 | Setting                    | Omschrijving                                                                 |
 |----------------------------|------------------------------------------------------------------------------|
 | socialmedia.cronjob        | Deze instelling geeft een 'cronjob' melding boven in het component. Indien `Ja` dan wordt melding niet meer getoond. |
-| socialmedia.cronjob_hash   | Een unieke hash die meegegeven dient met de cronjob als parameter. (zie cronjob) |
+| socialmedia.cronjob_hash   | Een unieke hash die meegegeven dient met de cronjob als parameter (zie kopje cronjob) . |
 | socialmedia.default_active | Indien `Ja` worden alle social media berichten standaard getoond/geactiveerd. |
 | socialmedia.log_email      | Het e-mail adres waar de 'log' van de cronjob heen gestuurd word. Meerdere e-mail adressen scheiden met een komma. |
 | socialmedia.log_lifetime   | Het aantal dagen dat de 'logs' moeten blijven bestaan. Na deze dagen worden de 'logs' automatisch opgeruimd. Standaard is `7`. |
-| socialmedia.log_send       | Indien `Ja` word de 'log' van de cronjob verstuurd naar het e-mail adres van `socialmedia.log_email`. Standaard is `Ja`. |
-| socialmedia.remove_emoji   | Indien `Ja` worden de Emoji emotions verwijderd uit de gebruikersnaam en content van de social media berichten. Emoji's zijn alleen mogelijk met een `utf8mb4` database karakter set. Standaard is `Ja`. |
+| socialmedia.log_send       | Indien `Ja` dan word de 'log' van de cronjob verstuurd naar het e-mail adres van `socialmedia.log_email`. Standaard is `Ja`. |
+| socialmedia.remove_emoji   | Indien `Ja` dan worden de Emoji emotions verwijderd uit de gebruikersnaam en content van de social media berichten. Emoji's zijn alleen mogelijk met een `utf8mb4` database karakter set. Standaard is `Ja`. |
+
+## Permission
+
+| Setting                    | Omschrijving                                                                 |
+|----------------------------|------------------------------------------------------------------------------|
+| socialmedia                | De algemene social media permission, zonder deze permission kan de gebruker het component niet gebruiken. |
+| socialmedia_admin          | De permission om bij de social media admin gedeelte te komen. In deze admin gedeelte kunnen de criteria ingesteld worden voor de social media berichten. |
+
 
 ## Nieuw in 2.0.0
 
