@@ -29,7 +29,7 @@
 
 ## Cronjob
 
-De social media berichten worden met behulp van een cronjob gesynchroniseerd, het beste is om deze cronjoh elke uur te runnen.
+De social media berichten worden met behulp van een cronjob gesynchroniseerd, het beste is om deze cronjob minimaal elke uur te runnen.
 
 De cronjob bevindt zich in `assets/components/socialmedia/crobjobs/socialmedia.cronjob.php` en moet aangeroepen worden met een `hash` parameter. Deze parameter moet het zelfde zijn als de `socialmedia.cronjob_hash` system setting. Dit om te voorkomen dat `hackers` of dergelijke onbeperkt de cronjob kunnen aanroepen.
 
