@@ -50,6 +50,18 @@ Voor instagram moet je gebruik maken van de https://instagram.pixelunion.net/ in
 - `socialmedia.source_instagram_client_id` -> 386f3c5c7edb4a43b56d0734da552c78
 - `socialmedia.source_instagram_client_secret` -> cf8fa82b36fe4bbf8c05b11a857652f3
 
+## System setting
+
+| Setting                    | Omschrijving                                                                 |
+|----------------------------|------------------------------------------------------------------------------|
+| socialmedia.cronjob        | Deze instelling geeft een 'cronjob' melding boven de extra. Indien `Ja` dan wordt melding niet meer getoond. |
+| socialmedia.cronjob_hash   | Een unieke hash die meegegeven dient met de cronjob als parameter. (zie cronjob) |
+| socialmedia.default_active | Indien `Ja` worden alle social media berichten standaard getoond/geactiveerd. |
+| socialmedia.log_email      | Het e-mail adres waar de 'log' van de cronjob heen gestuurd word. Meerdere e-mail adressen scheiden met een komma. |
+| socialmedia.log_lifetime   | Het aantal dagen dat de 'logs' moeten blijven bestaan. Na deze dagen worden de 'logs' automatisch opgeruimd. Standaard is `7`. |
+| socialmedia.log_send       | Indien `Ja` word de 'log' van de cronjob verstuurd naar het e-mail adres van `socialmedia.log_email`. Standaard is `Ja`. |
+| socialmedia.remove_emoji   | Indien `Ja` worden de Emoji emotions verwijderd uit de gebruikersnaam en content van de social media berichten. Emoji's zijn alleen mogelijk met een `utf8mb4` database karakter set. Standaard is `Ja`. |
+
 ## Nieuw in 2.0.0
 
 Sinds 2.0.0 word er gebruik gemaakt van criteria, deze criteria bepaald welke social media berichten worden gesynchroniseerd in de cronjob. Voorheen gingen deze 'criteria' aan de hand van systeem instellingen. De nieuwe manier van criteria kan nu bepaald worden binnen het component. Indien je de juiste rechten hebt (`socialmedia_admin`) dan heb je rechts boven in een knop `Admin weergave`.
