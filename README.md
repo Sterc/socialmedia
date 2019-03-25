@@ -39,6 +39,17 @@ De cronjob bevindt zich in `assets/components/socialmedia/crobjobs/socialmedia.c
 php socialmedia.cronjob_hash --hash=modx5bb37a381b64d2.44295829
 ```
 
+## Access tokens
+
+De meeste API's maken gebruik van oAuth inlog en spreekt wel voor zich. De access tokens hiervan kunnen gegenereerd worden via https://bitbucket.org/sterc/oauthprovider. 
+
+**Instagram**
+
+Voor instagram moet je gebruik maken van de https://instagram.pixelunion.net/ in combinatie met de volgende keys:
+
+- `socialmedia.source_instagram_client_id` -> 386f3c5c7edb4a43b56d0734da552c78
+- `socialmedia.source_instagram_client_secret` -> cf8fa82b36fe4bbf8c05b11a857652f3
+
 ## Nieuw in 2.0.0
 
 Sinds 2.0.0 word er gebruik gemaakt van criteria, deze criteria bepaald welke social media berichten worden gesynchroniseerd in de cronjob. Voorheen gingen deze 'criteria' aan de hand van systeem instellingen. De nieuwe manier van criteria kan nu bepaald worden binnen het component. Indien je de juiste rechten hebt (`socialmedia_admin`) dan heb je rechts boven in een knop `Admin weergave`.
