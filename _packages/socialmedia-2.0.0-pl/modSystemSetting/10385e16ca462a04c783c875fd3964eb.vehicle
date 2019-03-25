@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'bbfc2ceb1cef1424b80191b32a0d3959',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '10385e16ca462a04c783c875fd3964eb',
+  'native_key' => 'socialmedia.branding_url',
+  'object' => '{"key":"socialmedia.branding_url","value":"","xtype":"textfield","namespace":"socialmedia","area":"socialmedia","editedon":null}',
+);

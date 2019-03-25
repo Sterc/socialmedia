@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '2946bbcac8f360975871a1cb5a679ecd',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '55d42713eec8b845ca10bf9615d60a92',
+  'native_key' => 'socialmedia.source_facebook_client_id',
+  'object' => '{"key":"socialmedia.source_facebook_client_id","value":"","xtype":"textfield","namespace":"socialmedia","area":"socialmedia_facebook","editedon":null}',
+);

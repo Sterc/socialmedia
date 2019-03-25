@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '5830e6236acec991c8369fc211a7d724',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '5cc9ff67a87981161b38190f2304803f',
+  'native_key' => 'socialmedia.source_pinterest_empty_posts',
+  'object' => '{"key":"socialmedia.source_pinterest_empty_posts","value":"0","xtype":"combo-boolean","namespace":"socialmedia","area":"socialmedia_pinterest","editedon":null}',
+);

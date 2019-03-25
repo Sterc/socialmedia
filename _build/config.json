@@ -1,0 +1,197 @@
+{
+    "name": "SocialMedia",
+    "lowCaseName": "socialmedia",
+    "description": "A social media solution for MODx Revolution.",
+    "author": "Sterc",
+    "version": "2.0.0-pl",
+    "package":{
+        "menus": [{
+            "text": "socialmedia",
+            "description": "socialmedia.desc",
+            "parent": "components",
+            "action": "home"
+        }],
+        "elements": {
+            "chunks": [{
+                "name": "socialMediaItemTpl",
+                "file": "item.chunk.tpl"
+            },{
+                "name": "socialMediaWrapperTpl",
+                "file": "wrapper.chunk.tpl"
+            }],
+            "snippets": [{
+                "name": "SocialMedia",
+                "file": "socialmedia.snippet.php",
+                "properties": [{
+                    "name": "criteria",
+                    "description": "socialmedia.snippet_criteria_desc"
+                },{
+                    "name": "group",
+                    "description": "socialmedia.snippet_group_desc"
+                },{
+                    "name": "limit",
+                    "value": "10",
+                    "description": "socialmedia.snippet_limit_desc"
+                },{
+                    "name": "sort",
+                    "value": "{\"created\": \"DESC\"}",
+                    "description": "socialmedia.snippet_sort_desc"
+                },{
+                    "name": "tpl",
+                    "value": "@FILE elements/chunks/item.chunk.tpl",
+                    "description": "socialmedia.snippet_tpl_desc"
+                },{
+                    "name": "tplGroup",
+                    "description": "socialmedia.snippet_tplgroup_desc"
+                },{
+                    "name": "tplWrapper",
+                    "value": "@FILE elements/chunks/wrapper.chunk.tpl",
+                    "description": "socialmedia.snippet_tplwrapper_desc"
+                },{
+                    "name": "tpls",
+                    "value": "{}",
+                    "description": "socialmedia.snippet_tpls_desc"
+                }]
+            }]
+        },
+        "systemSettings": [{
+            "key": "branding_url",
+            "area": "socialmedia"
+        },{
+            "key": "branding_url_help",
+            "area": "socialmedia"
+        },{
+            "type": "combo-boolean",
+            "key": "cronjob",
+            "value": "0",
+            "area": "socialmedia"
+        },{
+            "type": "combo-boolean",
+            "key": "remove_emoji",
+            "value": "1",
+            "area": "socialmedia"
+        },{
+            "key": "cronjob_hash",
+            "area": "socialmedia"
+        },{
+            "key": "default_active",
+            "value": "1",
+            "area": "socialmedia"
+        },{
+            "key": "log_email",
+            "area": "socialmedia"
+        },{
+            "key": "log_lifetime",
+            "value": "7",
+            "area": "socialmedia"
+        },{
+            "type": "combo-boolean",
+            "key": "log_send",
+            "value": "1",
+            "area": "socialmedia"
+        },{
+            "key": "source_facebook_access_token",
+            "area": "socialmedia_facebook"
+        },{
+            "key": "source_facebook_client_id",
+            "area": "socialmedia_facebook"
+        },{
+            "key": "source_facebook_client_secret",
+            "area": "socialmedia_facebook"
+        },{
+            "type": "combo-boolean",
+            "key": "source_facebook_empty_posts",
+            "value": "0",
+            "area": "socialmedia_facebook"
+        },{
+            "key": "source_instagram_access_token",
+            "area": "socialmedia_instagram"
+        },{
+            "key": "source_instagram_client_id",
+            "area": "socialmedia_instagram"
+        },{
+            "key": "source_instagram_client_secret",
+            "area": "socialmedia_instagram"
+        },{
+            "type": "combo-boolean",
+            "key": "source_instagram_empty_posts",
+            "value": "1",
+            "area": "socialmedia_instagram"
+        },{
+            "key": "source_linkedin_access_token",
+            "area": "socialmedia_linkedin"
+        },{
+            "key": "source_linkedin_client_id",
+            "area": "socialmedia_linkedin"
+        },{
+            "key": "source_linkedin_client_secret",
+            "area": "socialmedia_linkedin"
+        },{
+            "type": "combo-boolean",
+            "key": "source_linkedin_empty_posts",
+            "value": "0",
+            "area": "socialmedia_linkedin"
+        },{
+            "key": "source_pinterest_access_token",
+            "area": "socialmedia_pinterest"
+        },{
+            "key": "source_pinterest_client_id",
+            "area": "socialmedia_pinterest"
+        },{
+            "key": "source_pinterest_client_secret",
+            "area": "socialmedia_pinterest"
+        },{
+            "type": "combo-boolean",
+            "key": "source_pinterest_empty_posts",
+            "value": "0",
+            "area": "socialmedia_pinterest"
+        },{
+            "key": "source_twitter_access_token",
+            "area": "socialmedia_twitter"
+        },{
+            "key": "source_twitter_access_token_secret",
+            "area": "socialmedia_twitter"
+        },{
+            "key": "source_twitter_consumer_key",
+            "area": "socialmedia_twitter"
+        },{
+            "key": "source_twitter_consumer_key_secret",
+            "area": "socialmedia_twitter"
+        },{
+            "type": "combo-boolean",
+            "key": "source_twitter_empty_posts",
+            "value": "0",
+            "area": "socialmedia_twitter"
+        },{
+            "key": "source_youtube_client_id",
+            "area": "socialmedia_youtube"
+        },{
+            "key": "source_youtube_client_secret",
+            "area": "socialmedia_youtube"
+        },{
+            "key": "source_youtube_refresh_token",
+            "area": "socialmedia_youtube"
+        },{
+            "type": "combo-boolean",
+            "key": "source_youtube_empty_posts",
+            "value": "0",
+            "area": "socialmedia_youtube"
+        }]
+    },
+    "build":{
+        "readme": "docs/readme.txt",
+        "license": "docs/license.txt",
+        "changelog": "docs/changelog.txt",
+        "resolver": {
+            "after": [
+                "resolve.tables.php",
+                "permissions.resolver.php",
+                "setupoptions.resolver.php",
+                "stercextra.resolver.php"
+            ]
+        },
+        "setupOptions":{
+            "source": "setup.options.php"
+        }
+    }
+}

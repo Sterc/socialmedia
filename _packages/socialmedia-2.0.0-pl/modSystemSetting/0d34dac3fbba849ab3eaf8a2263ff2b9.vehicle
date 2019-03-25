@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'fa4cad73ede2162cc6044f372be72cfa',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '0d34dac3fbba849ab3eaf8a2263ff2b9',
+  'native_key' => 'socialmedia.log_send',
+  'object' => '{"key":"socialmedia.log_send","value":"1","xtype":"combo-boolean","namespace":"socialmedia","area":"socialmedia","editedon":null}',
+);

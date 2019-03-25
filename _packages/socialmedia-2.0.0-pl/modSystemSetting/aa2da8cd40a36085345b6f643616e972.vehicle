@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '299cc133443e88d967ec209c00de86c6',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'aa2da8cd40a36085345b6f643616e972',
+  'native_key' => 'socialmedia.source_twitter_empty_posts',
+  'object' => '{"key":"socialmedia.source_twitter_empty_posts","value":"0","xtype":"combo-boolean","namespace":"socialmedia","area":"socialmedia_twitter","editedon":null}',
+);

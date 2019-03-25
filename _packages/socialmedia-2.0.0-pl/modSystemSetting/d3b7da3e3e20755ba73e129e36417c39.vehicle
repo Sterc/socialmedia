@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '25f3ded86f690e68673d9b89ec6dad6b',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'd3b7da3e3e20755ba73e129e36417c39',
+  'native_key' => 'socialmedia.source_linkedin_client_id',
+  'object' => '{"key":"socialmedia.source_linkedin_client_id","value":"","xtype":"textfield","namespace":"socialmedia","area":"socialmedia_linkedin","editedon":null}',
+);

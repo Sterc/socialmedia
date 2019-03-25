@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '6f0d93474bbebf3e0739e7bdf407dce6',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '91620408c2ac3ca79432f32065019678',
+  'native_key' => 'socialmedia.source_twitter_access_token_secret',
+  'object' => '{"key":"socialmedia.source_twitter_access_token_secret","value":"","xtype":"textfield","namespace":"socialmedia","area":"socialmedia_twitter","editedon":null}',
+);

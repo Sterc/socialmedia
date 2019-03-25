@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'de66ae52fd0cf72fc5600506e1660a1a',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '5ac0ed92269583d5187e7e95b9aae876',
+  'native_key' => 'socialmedia.remove_emoji',
+  'object' => '{"key":"socialmedia.remove_emoji","value":"1","xtype":"combo-boolean","namespace":"socialmedia","area":"socialmedia","editedon":null}',
+);

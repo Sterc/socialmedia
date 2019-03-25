@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'a39ba1195eeaa497ee30b3450d2d5676',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'e1d4797a09249500e8ba3d3209c05c38',
+  'native_key' => 'socialmedia.source_youtube_client_id',
+  'object' => '{"key":"socialmedia.source_youtube_client_id","value":"","xtype":"textfield","namespace":"socialmedia","area":"socialmedia_youtube","editedon":null}',
+);

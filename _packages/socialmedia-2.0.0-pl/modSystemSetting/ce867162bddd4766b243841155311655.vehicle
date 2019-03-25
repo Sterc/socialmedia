@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '2354a6daeb613b4e3109e40c2eeb8298',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'ce867162bddd4766b243841155311655',
+  'native_key' => 'socialmedia.log_email',
+  'object' => '{"key":"socialmedia.log_email","value":"","xtype":"textfield","namespace":"socialmedia","area":"socialmedia","editedon":null}',
+);

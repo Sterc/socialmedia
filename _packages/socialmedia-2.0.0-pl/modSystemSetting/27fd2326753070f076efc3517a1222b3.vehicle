@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'b00f8dcef895668ee357b81e9dbf2a95',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '27fd2326753070f076efc3517a1222b3',
+  'native_key' => 'socialmedia.source_linkedin_empty_posts',
+  'object' => '{"key":"socialmedia.source_linkedin_empty_posts","value":"0","xtype":"combo-boolean","namespace":"socialmedia","area":"socialmedia_linkedin","editedon":null}',
+);
