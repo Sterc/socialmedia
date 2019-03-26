@@ -50,7 +50,7 @@ Voor instagram moet je gebruik maken van de https://instagram.pixelunion.net/ in
 - `socialmedia.source_instagram_client_id` -> 386f3c5c7edb4a43b56d0734da552c78
 - `socialmedia.source_instagram_client_secret` -> cf8fa82b36fe4bbf8c05b11a857652f3
 
-## System setting
+## System settings
 
 | Setting                    | Omschrijving                                                                 |
 |----------------------------|------------------------------------------------------------------------------|
