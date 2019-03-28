@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '4ca396061578150af375ccb8c302716f',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '567daf3de8d12a5c791341c150d9f300',
+  'native_key' => 'socialmedia.cronjob_hash',
+  'object' => '{"key":"socialmedia.cronjob_hash","value":"","xtype":"textfield","namespace":"socialmedia","area":"socialmedia","editedon":null}',
+);

@@ -1,0 +1,1 @@
+<p>[[%socialmedia.no_messages? &namespace=`site`&topic=`default`]]</p>

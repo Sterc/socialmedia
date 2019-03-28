@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '119c2d9cc46c607159a126473438a0cc',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'ecf3fcc6ad4da2bfa42c36a2405692ef',
+  'native_key' => 'socialmedia.source_youtube_empty_posts',
+  'object' => '{"key":"socialmedia.source_youtube_empty_posts","value":"0","xtype":"combo-boolean","namespace":"socialmedia","area":"socialmedia_youtube","editedon":null}',
+);

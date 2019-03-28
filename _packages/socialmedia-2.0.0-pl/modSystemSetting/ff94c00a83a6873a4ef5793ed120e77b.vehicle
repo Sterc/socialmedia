@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '834a5108aaccc1aa6195579725865688',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => 'ff94c00a83a6873a4ef5793ed120e77b',
+  'native_key' => 'socialmedia.source_pinterest_access_token',
+  'object' => '{"key":"socialmedia.source_pinterest_access_token","value":"","xtype":"textfield","namespace":"socialmedia","area":"socialmedia_pinterest","editedon":null}',
+);

@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '0d0a11ab07bcbb07c2448d8a3677cae6',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '185b116604499376100e4e2342a6ac9e',
+  'native_key' => 'socialmedia.source_facebook_empty_posts',
+  'object' => '{"key":"socialmedia.source_facebook_empty_posts","value":"0","xtype":"combo-boolean","namespace":"socialmedia","area":"socialmedia_facebook","editedon":null}',
+);

@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => 'f142b6003019494d765d63ef41831819',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '699f78e94fd6bfc3ee132ebbc8138780',
+  'native_key' => 'socialmedia.source_instagram_empty_posts',
+  'object' => '{"key":"socialmedia.source_instagram_empty_posts","value":"1","xtype":"combo-boolean","namespace":"socialmedia","area":"socialmedia_instagram","editedon":null}',
+);

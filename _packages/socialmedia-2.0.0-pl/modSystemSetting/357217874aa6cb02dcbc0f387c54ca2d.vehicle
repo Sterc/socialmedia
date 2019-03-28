@@ -1,0 +1,16 @@
+<?php return array (
+  'unique_key' => 'key',
+  'preserve_keys' => true,
+  'update_object' => false,
+  'namespace' => 'socialmedia',
+  'resolve' => NULL,
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '49698f3d03ef526bf78446c961eef979',
+  'package' => 'modx',
+  'class' => 'modSystemSetting',
+  'signature' => '357217874aa6cb02dcbc0f387c54ca2d',
+  'native_key' => 'socialmedia.source_instagram_access_token',
+  'object' => '{"key":"socialmedia.source_instagram_access_token","value":"","xtype":"textfield","namespace":"socialmedia","area":"socialmedia_instagram","editedon":null}',
+);
