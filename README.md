@@ -23,6 +23,7 @@
 | limit                      | Het aantal social media berichten wat getoond mag worden. |
 | tpl                        | De template van een social media bericht. Dit kan een chunknaam, `@FILE` of `@INLINE` zijn. |
 | tplWrapper                 | De template van de wrapper van de social media berichten. Dit kan een chunknaam, `@FILE` of `@INLINE` zijn. |
+| tplWrapperEmpty            | De template als er geen social media berichten zijn. Dit kan een chunknaam, `@FILE` of `@INLINE` zijn. |
 | tpls                       | Een JSON object met de templates voor een specifiek social media bericht type. Bijvoorbeeld `{"facebook": "facebookChunk", "twitter": "twitterChunk"}`. |
 | usePdoTools                | Indien `true` dan word pdoTools gebruikt voor de tpl's en is fenom mogelijk (ook `@FILE` en `@INLINE` zijn mogelijk zonder pdoTools). Standaard `false`. |
 | usePdoElementsPath         | Indien `true` dan worden `@FILE` tpl's gebruikt vanuit de map die in de `pdotools_elements_path` systeem instelling ingesteld is. Anders word het de `core/components/socialmedia/` map gebruikt. Standaard `false`. |
