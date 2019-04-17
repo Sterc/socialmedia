@@ -9,6 +9,7 @@
 $_lang['socialmedia']                                                   = 'Social Media';
 
 $_lang['socialmedia.snippet_criteria_desc']                             = 'De ID van de criteria van de social media berichten. Meerdere ID\'s scheiden met een komma. Standaard is leeg, waardoor alle criteria weergegeven worden.';
+$_lang['socialmedia.snippet_filter_desc']                               = 'Het filter waaraan de social media berichten aan moeten voldoen, bijvoorbeeld "#modx". Meerdere filters scheiden met een komma.';
 $_lang['socialmedia.snippet_group_desc']                                = 'De criteria waarop de social media berichten gegroepeerd moeten worden.';
 $_lang['socialmedia.snippet_limit_desc']                                = 'Het maximaal aantal social media berichten wat weergegeven moet worden. Standaard is "10".';
 $_lang['socialmedia.snippet_where_desc']                                = 'De waarden waar de social media berichten aan moeten voldoen. Standaard is "{"active": "1"}".';

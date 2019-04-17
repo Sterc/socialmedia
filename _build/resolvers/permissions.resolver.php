@@ -6,7 +6,7 @@
  * Copyright 2019 by Sterc <modx@sterc.nl>
  */
 
-$package = 'oAuthProvider';
+$package = 'SocialMedia';
 
 $permissions = [[
     'name'          => 'socialmedia',

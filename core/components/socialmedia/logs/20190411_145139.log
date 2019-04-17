@@ -1,0 +1,15 @@
+INFO:: Start import process at 11-04-2019 14:51:37.
+INFO:: Import process for `Youtube` with criteria `@me`.
+ERROR:: Import process for `Youtube` with criteria `@me` failed `Daily Limit for Unauthenticated Use Exceeded. Continued use requires signup.`.
+INFO:: Import process for `LinkedIn` with criteria `@16259025`.
+ERROR:: Import process for `LinkedIn` with criteria `@16259025` failed `Empty oauth2_access_token`.
+INFO:: Import process for `Twitter` with criteria `@me`.
+ERROR:: Import process for `Twitter` with criteria `@me` failed `Bad Authentication data.`.
+INFO:: Import process for `Facebook` with criteria `@me`.
+ERROR:: Import process for `Facebook` with criteria `@me` failed `An active access token must be used to query information about the current user.`.
+INFO:: Import process for `Youtube` with criteria `@ID:UCP8xOz0mI5zpvI07Bm1LIJw`.
+ERROR:: Import process for `Youtube` with criteria `@ID:UCP8xOz0mI5zpvI07Bm1LIJw` failed `Daily Limit for Unauthenticated Use Exceeded. Continued use requires signup.`.
+INFO:: Import process for `Instagram` with criteria `@2864649305`.
+ERROR:: Import process for `Instagram` with criteria `@2864649305` failed `Missing client_id or access_token URL parameter.`.
+INFO:: End import process at 11-04-2019 14:51:39.
+INFO:: Total execution time in seconds: 1.41.

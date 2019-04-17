@@ -16,6 +16,7 @@ class SocialMediaSnippet extends SocialMediaSnippets
      */
     public $properties = [
         'criteria'              => '',
+        'filter'                => '',
         'where'                 => '{"active": "1"}',
         'sortby'                => '{"created": "DESC"}',
         'limit'                 => 10,
@@ -40,6 +41,7 @@ class SocialMediaSnippet extends SocialMediaSnippets
 
         $sources    = $this->getAvailableSources(true);
         $criterias  = array_filter(explode(',', $this->getProperty('criteria')));
+        $filters    = array_filter(explode(',', $this->getProperty('filter')));
         $tpls       = json_decode($this->getProperty('tpls'), true);
         $where      = json_decode($this->getProperty('where'), true);
         $sortby     = json_decode($this->getProperty('sortby'), true);
@@ -58,6 +60,18 @@ class SocialMediaSnippet extends SocialMediaSnippets
             $criteria->where([
                 'criteria_id:IN' => $criterias
             ]);
+        }
+
+        if (count($filters) >= 1) {
+            $filter = [];
+
+            foreach ($filters as $value) {
+                $filter[] = [
+                    'content:LIKE' => '%' . trim($value) . '%'
+                ];
+            }
+
+            $criteria->where($filter, xPDOQuery::SQL_OR);
         }
 
         if ($sortby) {

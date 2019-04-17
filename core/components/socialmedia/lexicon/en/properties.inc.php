@@ -9,6 +9,7 @@
 $_lang['socialmedia']                                                   = 'Social Media';
 
 $_lang['socialmedia.snippet_criteria_desc']                             = 'The ID of the criteria of the social media messages. Separate multiple ID\'s with a comma. Default is empty, all criteria will be shown.';
+$_lang['socialmedia.snippet_filter_desc']                               = 'The filter that the social media messages needs to contain, for example "#modx". Separate multiple filters with a comma.';
 $_lang['socialmedia.snippet_group_desc']                                = 'The criteria to group the social media messages.';
 $_lang['socialmedia.snippet_limit_desc']                                = 'The number of social media message that will be shown. Default is "10".';
 $_lang['socialmedia.snippet_where_desc']                                = 'The values that the social media messages needs to contain. Default is "{"active": "1"}".';

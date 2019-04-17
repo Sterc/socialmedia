@@ -3,7 +3,7 @@
     "lowCaseName": "socialmedia",
     "description": "A social media solution for MODx Revolution.",
     "author": "Sterc",
-    "version": "2.0.0-pl",
+    "version": "2.0.1-pl",
     "package":{
         "menus": [{
             "text": "socialmedia",
@@ -26,6 +26,9 @@
                     "name": "criteria",
                     "description": "socialmedia.snippet_criteria_desc"
                 },{
+                    "name": "filter",
+                    "description": "socialmedia.snippet_filter_desc"
+                },{
                     "name": "group",
                     "description": "socialmedia.snippet_group_desc"
                 },{
@@ -33,9 +36,13 @@
                     "value": "10",
                     "description": "socialmedia.snippet_limit_desc"
                 },{
-                    "name": "sort",
+                    "name": "where",
+                    "value": "{\"active\": \"1\"}",
+                    "description": "socialmedia.snippet_where_desc"
+                },{
+                    "name": "sortby",
                     "value": "{\"created\": \"DESC\"}",
-                    "description": "socialmedia.snippet_sort_desc"
+                    "description": "socialmedia.snippet_sortby_desc"
                 },{
                     "name": "tpl",
                     "value": "@FILE elements/chunks/item.chunk.tpl",

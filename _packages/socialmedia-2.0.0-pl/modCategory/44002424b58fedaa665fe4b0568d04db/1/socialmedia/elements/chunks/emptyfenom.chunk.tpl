@@ -1,1 +1,0 @@
-<p>{'socialmedia.no_messages' | lexicon}</p>

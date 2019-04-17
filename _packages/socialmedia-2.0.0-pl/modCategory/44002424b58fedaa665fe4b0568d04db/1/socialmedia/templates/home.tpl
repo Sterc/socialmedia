@@ -1,1 +1,0 @@
-<div id="socialmedia-panel-home-div"></div>

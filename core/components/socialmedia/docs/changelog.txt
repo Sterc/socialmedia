@@ -3,6 +3,13 @@ Social Media
 ----------------------
 
 ----------------------
+Version: 2.0.1
+Released: 2019-04-11
+----------------------
+- Some code clean ups
+- You can filter social media messages on client side (NOT API SIDE).
+
+----------------------
 Version: 2.0.0
 Released: 2019-03-25
 ----------------------
