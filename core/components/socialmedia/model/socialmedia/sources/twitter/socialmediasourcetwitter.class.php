@@ -40,8 +40,8 @@ class SocialMediaSourceTwitter extends SocialMediaSource
                 ];
             } else {
                 $parameters = [
-                    'screen_name'   => substr($criteria, 1),
-                    'count'         => $limit
+                    'screen_name'       => substr($criteria, 1),
+                    'count'             => $limit
                 ];
             }
 
@@ -96,6 +96,8 @@ class SocialMediaSourceTwitter extends SocialMediaSource
         $content    = '';
         $image      = '';
         $video      = '';
+        $likes      = 0;
+        $comments   = 0;
 
         if (isset($data['user']['profile_image_url'])) {
             $userImage = str_replace(['https:', 'http:', '_normal'], ['', '', '_200x200'], $data['user']['profile_image_url']);
@@ -131,6 +133,14 @@ class SocialMediaSourceTwitter extends SocialMediaSource
             }
         }
 
+        if (isset($data['favorite_count'])) {
+            $likes = (int) $data['favorite_count'];
+        }
+
+        if (isset($data['retweet_count'])) {
+            $comments = (int) $data['retweet_count'];
+        }
+
         return [
             'key'           => $data['id'],
             'source'        => strtolower($this->getName()),
@@ -142,6 +152,8 @@ class SocialMediaSourceTwitter extends SocialMediaSource
             'image'         => $image,
             'video'         => $video,
             'url'           => 'https://www.twitter.com/' .$data['user']['screen_name'] . '/status/' . $data['id'],
+            'likes'         => $likes,
+            'comments'      => $comments,
             'created'       => date('Y-m-d H:i:s', strtotime($data['created_at']))
         ];
     }

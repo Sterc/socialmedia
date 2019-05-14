@@ -27,6 +27,8 @@ $xpdo_meta_map['SocialMediaMessage'] = [
         'image'         => null,
         'video'         => null,
         'url'           => null,
+        'likes'         => null,
+        'comments'      => null,
         'active'        => null,
         'created'       => null
     ],
@@ -112,6 +114,20 @@ $xpdo_meta_map['SocialMediaMessage'] = [
             'phptype'       => 'string',
             'null'          => false,
             'default'       => ''
+        ],
+        'likes'         => [
+            'dbtype'        => 'int',
+            'precision'     => '11',
+            'phptype'       => 'integer',
+            'null'          => false,
+            'default'       => 0
+        ],
+        'comments'       => [
+            'dbtype'        => 'int',
+            'precision'     => '11',
+            'phptype'       => 'integer',
+            'null'          => false,
+            'default'       => 0
         ],
         'active'        => [
             'dbtype'        => 'int',

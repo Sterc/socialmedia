@@ -3,7 +3,7 @@
     "lowCaseName": "socialmedia",
     "description": "A social media solution for MODx Revolution.",
     "author": "Sterc",
-    "version": "2.0.1-pl",
+    "version": "2.0.2-pl",
     "package":{
         "menus": [{
             "text": "socialmedia",
@@ -191,7 +191,7 @@
         "changelog": "docs/changelog.txt",
         "resolver": {
             "after": [
-                "resolve.tables.php",
+                "tables.resolver.php",
                 "permissions.resolver.php",
                 "setupoptions.resolver.php",
                 "stercextra.resolver.php"

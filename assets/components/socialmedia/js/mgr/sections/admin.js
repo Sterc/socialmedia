@@ -18,9 +18,9 @@ SocialMedia.page.Admin = function(config) {
     }
 
     config.buttons.push({
-        text   : '<i class="icon icon-cogs"></i>' + _('socialmedia.default_view'),
-        handler: this.toDefaultView,
-        scope  : this
+        text        : '<i class="icon icon-cogs"></i>' + _('socialmedia.default_view'),
+        handler     : this.toDefaultView,
+        scope       : this
     });
 
     if (SocialMedia.config.branding_url_help) {

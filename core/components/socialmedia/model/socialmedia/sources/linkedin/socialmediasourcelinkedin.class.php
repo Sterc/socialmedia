@@ -91,6 +91,8 @@ class SocialMediaSourceLinkedin extends SocialMediaSource
             $content    = '';
             $image      = '';
             $video      = '';
+            $likes      = 0;
+            $comments   = 0;
 
             if (isset($account['logoUrl'])) {
                 $userImage = str_replace(['https:', 'http:'], '', $account['logoUrl']);
@@ -108,6 +110,14 @@ class SocialMediaSourceLinkedin extends SocialMediaSource
 
             $url = explode('-', $data['updateKey']);
 
+            if (isset($data['likes']['_total'])) {
+                $likes = (int) $data['likes']['_total'];
+            }
+
+            if (isset($data['updateComments']['_total'])) {
+                $comments = (int) $data['updateComments']['_total'];
+            }
+
             return [
                 'key'           => $data['updateContent']['companyStatusUpdate']['share']['id'],
                 'source'        => strtolower($this->getName()),
@@ -119,6 +129,8 @@ class SocialMediaSourceLinkedin extends SocialMediaSource
                 'image'         => $image,
                 'video'         => $video,
                 'url'           => 'https://www.linkedin.com/hp/update/' . end($url),
+                'likes'         => $likes,
+                'comments'      => $comments,
                 'created'       => date('Y-m-d H:i:s', $data['updateContent']['companyStatusUpdate']['share']['timestamp'] / 1000)
             ];
         }

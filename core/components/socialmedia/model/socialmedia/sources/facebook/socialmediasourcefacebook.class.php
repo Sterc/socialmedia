@@ -52,7 +52,7 @@ class SocialMediaSourceFacebook extends SocialMediaSource
 
             if ((int) $responseAccount['code'] === 200) {
                 $parameters = [
-                    'fields'    => 'id,from,message,created_time,full_picture,permalink_url,type,source,link',
+                    'fields'    => 'id,from,message,created_time,full_picture,permalink_url,type,link,shares,comments.summary(true),likes.summary(true)',
                     'limit'     => $limit
                 ];
 
@@ -62,6 +62,7 @@ class SocialMediaSourceFacebook extends SocialMediaSource
                     $output = [];
 
                     foreach ((array) $responseMessages['data']['data'] as $data) {
+                        //print_r($data);
                         $output[] = $this->getFormat($data, $responseAccount['data']);
                     }
 
@@ -93,6 +94,8 @@ class SocialMediaSourceFacebook extends SocialMediaSource
         $content    = '';
         $image      = '';
         $video      = '';
+        $likes      = 0;
+        $comments   = 0;
 
         if (isset($account['picture']['data']['url'])) {
             $userImage = str_replace(['https:', 'http:'], '', $account['picture']['data']['url']);
@@ -110,6 +113,14 @@ class SocialMediaSourceFacebook extends SocialMediaSource
             $video = str_replace(['https:', 'http:'], '', $data['link']);
         }
 
+        if (isset($data['likes']['summary']['total_count'])) {
+            $likes = (int) $data['likes']['summary']['total_count'];
+        }
+
+        if (isset($data['comments']['summary']['total_count'])) {
+            $comments = (int) $data['comments']['summary']['total_count'];
+        }
+
         return [
             'key'           => $data['id'],
             'source'        => strtolower($this->getName()),
@@ -121,6 +132,8 @@ class SocialMediaSourceFacebook extends SocialMediaSource
             'image'         => $image,
             'video'         => $video,
             'url'           => $data['permalink_url'],
+            'likes'         => $likes,
+            'comments'      => $comments,
             'created'       => date('Y-m-d H:i:s', strtotime($data['created_time']))
         ];
     }

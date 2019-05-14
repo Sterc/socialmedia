@@ -132,6 +132,8 @@ $_lang['socialmedia.label_message_content']                             = 'Messa
 $_lang['socialmedia.label_message_content_desc']                        = '';
 $_lang['socialmedia.label_message_status']                              = 'Status';
 $_lang['socialmedia.label_message_status_desc']                         = '';
+$_lang['socialmedia.label_message_reactions']                           = 'Reacties';
+$_lang['socialmedia.label_message_reactions_desc']                      = '';
 $_lang['socialmedia.label_message_created']                             = 'Posted';
 $_lang['socialmedia.label_message_created_desc']                        = '';
 

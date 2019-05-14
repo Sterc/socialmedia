@@ -19,9 +19,9 @@ SocialMedia.page.Home = function(config) {
 
     if (SocialMedia.config.permissions.admin) {
         config.buttons.push({
-            text   : '<i class="icon icon-cogs"></i>' + _('socialmedia.admin_view'),
-            handler: this.toAdminView,
-            scope  : this
+            text        : '<i class="icon icon-cogs"></i>' + _('socialmedia.admin_view'),
+            handler     : this.toAdminView,
+            scope       : this
         });
     }
 

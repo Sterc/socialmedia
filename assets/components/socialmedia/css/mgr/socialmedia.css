@@ -54,3 +54,8 @@
 .pinterest {
     color: #cb2026 !important;
 }
+
+.x-grid-label {
+    display: inline-block;
+    width: 30px;
+}

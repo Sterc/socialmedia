@@ -101,6 +101,8 @@ class SocialMediaSourceInstagram extends SocialMediaSource
         $content    = '';
         $image      = '';
         $video      = '';
+        $likes      = 0;
+        $comments   = 0;
 
         if (empty($userName)) {
             $userName = $data['user']['username'];
@@ -126,6 +128,14 @@ class SocialMediaSourceInstagram extends SocialMediaSource
             }
         }
 
+        if (isset($data['likes']['count'])) {
+            $likes = (int) $data['likes']['count'];
+        }
+
+        if (isset($data['comments']['count'])) {
+            $comments = (int) $data['comments']['count'];
+        }
+
         return [
             'key'           => $data['id'],
             'source'        => strtolower($this->getName()),
@@ -137,6 +147,8 @@ class SocialMediaSourceInstagram extends SocialMediaSource
             'image'         => $image,
             'video'         => $video,
             'url'           => $data['link'],
+            'likes'         => $likes,
+            'comments'      => $comments,
             'created'       => date('Y-m-d H:i:s', $data['created_time'])
         ];
     }

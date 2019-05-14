@@ -1,7 +1,7 @@
 ----------------------
 Social Media
 ----------------------
-Version: 2.0.1
+Version: 2.0.2
 Author: Oene Tjeerd de Bruin
 Contact: oenetjeerd@sterc.nl
 ----------------------

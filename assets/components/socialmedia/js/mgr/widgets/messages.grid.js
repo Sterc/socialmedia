@@ -114,6 +114,14 @@ SocialMedia.grid.Messages = function(config) {
             width       : 250,
             renderer    : this.renderContent
         }, {
+            header      : _('socialmedia.label_message_reactions'),
+            dataIndex   : '',
+            sortable    : true,
+            editable    : true,
+            width       : 125,
+            fixed       : true,
+            renderer    : this.renderReactions
+        },{
             header      : _('socialmedia.label_message_status'),
             dataIndex   : 'active',
             sortable    : true,
@@ -145,7 +153,7 @@ SocialMedia.grid.Messages = function(config) {
         },
         autosave    : true,
         save_action : 'mgr/messages/updatefromgrid',
-        fields      : ['id', 'criteria_id', 'key', 'source', 'user_name', 'user_account', 'user_image', 'user_account', 'user_url', 'content', 'image', 'video', 'url', 'active', 'created', 'time_ago'],
+        fields      : ['id', 'criteria_id', 'key', 'source', 'user_name', 'user_account', 'user_image', 'user_account', 'user_url', 'content', 'image', 'video', 'url', 'likes', 'comments', 'active', 'created', 'time_ago'],
         paging      : true,
         pageSize    : MODx.config.default_per_page > 30 ? MODx.config.default_per_page : 30,
         sortBy      : 'created'
@@ -357,6 +365,9 @@ Ext.extend(SocialMedia.grid.Messages, MODx.grid.Grid, {
         return String.format('<a href="{0}" target="_blank" title="{1}" class="x-grid-link">{2}</a>', e.json.url, _('socialmedia.show_source', {
             'source' : Ext.util.Format.capitalize(e.json.source)
         }), d);
+    },
+    renderReactions: function(d, c, e) {
+        return String.format('<span class="icon icon-thumbs-up"></span> <span class="x-grid-label">{0}</span> <span class="icon icon-comments"></span> <span class="x-grid-label">{1}</span>', e.json.likes, e.json.comments);
     },
     renderStatus: function(d, c) {
         c.css = parseInt(d) === 1 ? 'green' : 'red';

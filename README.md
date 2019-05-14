@@ -1,5 +1,5 @@
 # MODX Social Media
-![Poi version](https://img.shields.io/badge/version-2.0.0-red.svg) ![MODX Extra by Sterc](https://img.shields.io/badge/checked%20by-Oetzie-blue.svg) ![MODX version requirements](https://img.shields.io/badge/modx%20version%20requirement-2.4%2B-brightgreen.svg)
+![Poi version](https://img.shields.io/badge/version-2.0.2-red.svg) ![MODX Extra by Sterc](https://img.shields.io/badge/checked%20by-Oetzie-blue.svg) ![MODX version requirements](https://img.shields.io/badge/modx%20version%20requirement-2.4%2B-brightgreen.svg)
 
 ## Snippets
 
@@ -92,3 +92,7 @@ Een criteria kan uit bepaalde delen bestaan, een `@` of een `#`. De @ verwijst n
 ```
 
 `@me` en `@self` zijn gereserveerde criteria en verwijst naar het account waarmee de API gemachtigd is.
+
+## Nieuw in 2.0.2
+
+Comments en likes worden nu ook mee genomen tijdens de synchronisatie.
