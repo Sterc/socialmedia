@@ -18,6 +18,7 @@
 | Parameter                  | Omschrijving                                                                 |
 |----------------------------|------------------------------------------------------------------------------|
 | criteria                   | De ID van de criteria waarvan de social media berichten getoond dienen te worden. Meerdere ID's scheiden met een komma. Indien leeg worden gewoon alle criteria getoond. Standaard is leeg. |
+| filter                     | Het filter waar de social media berichten aan moeten voldoen, bijvoorbeeld `#modx`. |
 | where                      | De where statement waar de social media berichten aan moeten voldoen. Standaard is `{"active": "1"}`. |
 | sortby                     | De sortby statement waarop de social media berichten gestorteerd moeten worden. Standaard is `{"created": "DESC"}`. |
 | limit                      | Het aantal social media berichten wat getoond mag worden. |
