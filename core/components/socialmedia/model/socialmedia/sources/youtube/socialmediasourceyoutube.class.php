@@ -179,10 +179,10 @@ class SocialMediaSourceYoutube extends SocialMediaSource
                 'source'        => strtolower($this->getName()),
                 'user_name'     => $this->getEmojiFormat($userName),
                 'user_account'  => $this->getEmojiFormat($userAccount),
-                'user_image'    => $userImage,
+                'user_image'    => $this->getImageFormat($userImage),
                 'user_url'      => $userUrl,
                 'content'       => $this->getEmojiFormat($content),
-                'image'         => $image,
+                'image'         => $this->getImageFormat($image),
                 'video'         => 'https://www.youtube.com/watch?v=' . $id,
                 'url'           => 'https://www.youtube.com/watch?v=' . $id,
                 'created'       => date('Y-m-d H:i:s', strtotime($data['snippet']['publishedAt']))

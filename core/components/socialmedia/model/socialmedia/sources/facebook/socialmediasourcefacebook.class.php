@@ -62,7 +62,6 @@ class SocialMediaSourceFacebook extends SocialMediaSource
                     $output = [];
 
                     foreach ((array) $responseMessages['data']['data'] as $data) {
-                        //print_r($data);
                         $output[] = $this->getFormat($data, $responseAccount['data']);
                     }
 
@@ -126,10 +125,10 @@ class SocialMediaSourceFacebook extends SocialMediaSource
             'source'        => strtolower($this->getName()),
             'user_name'     => $this->getEmojiFormat($account['name']),
             'user_account'  => '',
-            'user_image'    => $userImage,
+            'user_image'    => $this->getImageFormat($userImage),
             'user_url'      => '',
             'content'       => $this->getEmojiFormat($content),
-            'image'         => $image,
+            'image'         => $this->getImageFormat($image),
             'video'         => $video,
             'url'           => $data['permalink_url'],
             'likes'         => $likes,

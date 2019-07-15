@@ -126,10 +126,10 @@ class SocialMediaSourcePinterest extends SocialMediaSource
             'source'        => strtolower($this->getName()),
             'user_name'     => $this->getEmojiFormat($data['creator']['first_name'] . ' ' . $data['creator']['last_name']),
             'user_account'  => $this->getEmojiFormat($data['creator']['username']),
-            'user_image'    => $userImage,
+            'user_image'    => $this->getImageFormat($userImage),
             'user_url'      => 'https://www.pinterest.com/' . $data['creator']['username'],
             'content'       => $this->getEmojiFormat($content),
-            'image'         => $image,
+            'image'         => $this->getImageFormat($image),
             'video'         => $video,
             'url'           => 'https://www.pinterest.com/pin/' . $data['id'],
             'created'       => date('Y-m-d H:i:s', strtotime($data['created_at']))
@@ -143,8 +143,6 @@ class SocialMediaSourcePinterest extends SocialMediaSource
      */
     public function getHtmlFormat($content)
     {
-
-
         $content = preg_replace('/@(\w+)/', '<a href="https://www.pinterest.com/\\1" target="_blank">@\\1</a>', $content);
         $content = preg_replace('/#(\w+)/', '<a href="https://www.pinterest.com/search/pins/?q=\\1" target="_blank">#\\1</a>', $content);
 

@@ -161,4 +161,42 @@ class SocialMediaSource
 
         return $content;
     }
+
+    /**
+     * @access public.
+     * @param String $url.
+     * @return Boolean|String.
+     */
+    public function getImageFormat($url)
+    {
+        if (!(bool) $this->modx->getOption('socialmedia.image_path', null, true)) {
+            return $url;
+        }
+
+        $image = $url;
+
+        if (strrpos($image, '?') !== false) {
+            $image = substr($image, 0, strrpos($image, '?'));
+        }
+
+        $name = strtolower(substr($image, strrpos($image, '/') + 1));
+
+        if (preg_match('/asid\=([A-Za-z0-9\-\_]+)/si', $url, $matches)) {
+            $name = $matches[1] . '.jpeg';
+        }
+
+        if (empty($name)) {
+            return $url;
+        }
+
+        $location =  '/' . trim($this->modx->getOption('socialmedia.image_path'), '/') . '/' . ltrim($name, '/');
+
+        $response = $this->getSource()->makeImageRequest($url, $location);
+
+        if ((int) $response['code'] === 200) {
+            return $response['data'];
+        }
+
+        return $url;
+    }
 }

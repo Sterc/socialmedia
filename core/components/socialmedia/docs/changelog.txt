@@ -3,6 +3,13 @@ Social Media
 ----------------------
 
 ----------------------
+Version: 2.0.3
+Released: 2019-07-15
+----------------------
+- Download images to the server (Facebook image expired messages).
+- DB column 'user_image' and 'image' changed from VARCHAR to TEXT.
+
+----------------------
 Version: 2.0.2
 Released: 2019-05-13
 ----------------------

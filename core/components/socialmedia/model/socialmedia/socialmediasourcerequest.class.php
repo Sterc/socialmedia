@@ -114,6 +114,54 @@ class SocialMediaSourceRequest
 
     /**
      * @access public.
+     * @param String $source.
+     * @param String $destination.
+     * @return Mixed.
+     */
+    public function makeImageRequest($source, $destination)
+    {
+        $basePath = rtrim($this->modx->getOption('base_path', null, MODX_BASE_PATH), '/');
+
+        if (strpos($source, '//') === 0) {
+            $source = substr($source, 2);
+        }
+
+        if (file_exists($basePath . $destination)) {
+            return $this->setResponse(200, $destination);
+        }
+
+        if (!file_exists($basePath . $destination)) {
+            $file = fopen($basePath . $destination, 'wb');
+
+            if ($file) {
+                $curl = curl_init($source);
+
+                curl_setopt_array($curl, [
+                    CURLOPT_FILE            => $file,
+                    CURLOPT_HEADER          => 0,
+                    CURLOPT_FOLLOWLOCATION  => true
+                ]);
+
+                $response       = curl_exec($curl);
+                $responseInfo   = curl_getinfo($curl);
+
+                curl_close($curl);
+
+                fclose($file);
+
+                if (!isset($responseInfo['http_code']) || (int) $responseInfo['http_code'] !== 200) {
+                    return $this->setResponse(400, 'Image returned incorrect HTTP code.');
+                }
+
+                return $this->setResponse(200, $destination);
+            }
+        }
+
+        return $this->setResponse(400, 'Image returned incorrect HTTP code.');
+    }
+
+    /**
+     * @access public.
      * @param Integer $code.
      * @param Array|String $data.
      * @return Array.

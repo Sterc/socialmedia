@@ -29,6 +29,10 @@ $_lang['setting_socialmedia.cronjob_hash']                              = 'Cronj
 $_lang['setting_socialmedia.cronjob_hash_desc']                         = 'De hash van de cronjob, deze hash dient als parameter mee gegeven te worden met de cronjob.';
 $_lang['setting_socialmedia.remove_emoji']                              = 'Verwijder Emoji';
 $_lang['setting_socialmedia.remove_emoji_desc']                         = 'Indien "Ja" worden alle Emoji emoticons verwijderd uit de social media berichten tijdens de import. Emoji is alleen mogelijk met een \'utf8mb4\' database karakter set.';
+$_lang['setting_socialmedia.download_image']                            = 'Afbeeldingen downloaden';
+$_lang['setting_socialmedia.download_image_desc']                       = 'Indien "Ja" worden de afbeeldingen van de social media gedownload en lokaal opgeslagen.';
+$_lang['setting_socialmedia.image_path']                                = 'Afbeeldingen folder';
+$_lang['setting_socialmedia.image_path_desc']                           = 'De folder waar de afbeeldingen van de social media berichten gedownload worden.';
 
 $_lang['area_socialmedia_twitter']                                      = 'Social Media Twitter';
 $_lang['setting_socialmedia.source_twitter_access_token']               = 'Twitter access token';

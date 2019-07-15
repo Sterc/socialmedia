@@ -3,7 +3,7 @@
     "lowCaseName": "socialmedia",
     "description": "A social media solution for MODx Revolution.",
     "author": "Sterc",
-    "version": "2.0.2-pl",
+    "version": "2.0.3-pl",
     "package":{
         "menus": [{
             "text": "socialmedia",
@@ -95,6 +95,15 @@
             "type": "combo-boolean",
             "key": "log_send",
             "value": "1",
+            "area": "socialmedia"
+        },{
+            "type": "combo-boolean",
+            "key": "download_image",
+            "value": "1",
+            "area": "socialmedia"
+        },{
+            "key": "image_path",
+            "value": "/uploads/socialmedia/",
             "area": "socialmedia"
         },{
             "key": "source_facebook_access_token",

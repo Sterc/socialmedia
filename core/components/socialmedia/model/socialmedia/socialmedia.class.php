@@ -50,7 +50,7 @@ class SocialMedia
             'css_url'               => $assetsUrl . 'css/',
             'assets_url'            => $assetsUrl,
             'connector_url'         => $assetsUrl . 'connector.php',
-            'version'               => '2.0.2',
+            'version'               => '2.0.3',
             'branding_url'          => $this->modx->getOption('socialmedia.branding_url'),
             'branding_help_url'     => $this->modx->getOption('socialmedia.branding_url_help'),
             'cronjob'               => (bool) $this->modx->getOption('socialmedia.cronjob', null, false),

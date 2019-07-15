@@ -75,8 +75,7 @@ $xpdo_meta_map['SocialMediaMessage'] = [
             'default'       => ''
         ],
         'user_image'    => [
-            'dbtype'        => 'varchar',
-            'precision'     => '255',
+            'dbtype'        => 'text',
             'phptype'       => 'string',
             'null'          => false,
             'default'       => ''
@@ -95,8 +94,7 @@ $xpdo_meta_map['SocialMediaMessage'] = [
             'default'       => ''
         ],
         'image'         => [
-            'dbtype'        => 'varchar',
-            'precision'     => '255',
+            'dbtype'        => 'text',
             'phptype'       => 'string',
             'null'          => false,
             'default'       => ''
