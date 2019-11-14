@@ -66,14 +66,14 @@ $_lang['setting_socialmedia.source_instagram_access_token_desc']        = 'The I
 $_lang['setting_socialmedia.source_instagram_empty_posts']              = 'Instagram "Unknown or empty message" show.';
 $_lang['setting_socialmedia.source_instagram_empty_posts_desc']         = 'If yes, the Instagram message with "Unknown or empty message" will shown.';
 
-$_lang['area_socialmedia_youtube']                                      = 'Social Media Youtube';
-$_lang['setting_socialmedia.source_youtube_client_id']                  = 'Youtube client ID';
-$_lang['setting_socialmedia.source_youtube_client_id_desc']             = 'The Youtube client ID, you can get this at https://console.developers.google.com/.';
-$_lang['setting_socialmedia.source_youtube_client_secret']              = 'Youtube client secret';
-$_lang['setting_socialmedia.source_youtube_client_secret_desc']         = 'The Youtube client secret, you can get this at https://console.developers.google.com/.';
-$_lang['setting_socialmedia.source_youtube_refresh_token']              = 'Youtube refresh token';
-$_lang['setting_socialmedia.source_youtube_refresh_token_desc']         = 'The Youtube refresh token, you can get this with oAuth with the minimum scope "https://www.googleapis.com/auth/youtube.readonly".';
-$_lang['setting_socialmedia.source_youtube_empty_posts']                = 'Youtube "Unknown or empty message" show.';
+$_lang['area_socialmedia_youtube']                                      = 'Social Media YouTube';
+$_lang['setting_socialmedia.source_youtube_client_id']                  = 'YouTube client ID';
+$_lang['setting_socialmedia.source_youtube_client_id_desc']             = 'The YouTube client ID, you can get this at https://console.developers.google.com/.';
+$_lang['setting_socialmedia.source_youtube_client_secret']              = 'YouTube client secret';
+$_lang['setting_socialmedia.source_youtube_client_secret_desc']         = 'The YouTube client secret, you can get this at https://console.developers.google.com/.';
+$_lang['setting_socialmedia.source_youtube_refresh_token']              = 'YouTube refresh token';
+$_lang['setting_socialmedia.source_youtube_refresh_token_desc']         = 'The YouTube refresh token, you can get this with oAuth with the minimum scope "https://www.googleapis.com/auth/youtube.readonly".';
+$_lang['setting_socialmedia.source_youtube_empty_posts']                = 'YouTube "Unknown or empty message" show.';
 $_lang['setting_socialmedia.source_youtube_empty_posts_desc']           = 'If yes, the Youtube message with "Unknown or empty message" will shown.';
 
 $_lang['area_socialmedia_linkedin']                                     = 'Social Media LinkedIn';
