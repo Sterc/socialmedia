@@ -66,15 +66,15 @@ $_lang['setting_socialmedia.source_instagram_access_token_desc']        = 'De In
 $_lang['setting_socialmedia.source_instagram_empty_posts']              = 'Instagram "Onbekend of leeg bericht" weergegeven.';
 $_lang['setting_socialmedia.source_instagram_empty_posts_desc']         = 'Indien ja, worden de Instagram berichten met "Onbekend of leeg bericht" weergegeven.';
 
-$_lang['area_socialmedia_youtube']                                      = 'Social Media Youtube';
-$_lang['setting_socialmedia.source_youtube_client_id']                  = 'Youtube client ID';
-$_lang['setting_socialmedia.source_youtube_client_id_desc']             = 'De Youtube client ID, deze is te verkrijgen via https://console.developers.google.com/.';
-$_lang['setting_socialmedia.source_youtube_client_secret']              = 'Youtube client secret';
-$_lang['setting_socialmedia.source_youtube_client_secret_desc']         = 'De Youtube client secret, deze is te verkrijgen via https://console.developers.google.com/.';
-$_lang['setting_socialmedia.source_youtube_refresh_token']              = 'Youtube refresh token';
-$_lang['setting_socialmedia.source_youtube_refresh_token_desc']         = 'De Youtube refresh token, deze is te verkrijgen via oAuth met de minimale scope "https://www.googleapis.com/auth/youtube.readonly".';
+$_lang['area_socialmedia_youtube']                                      = 'Social Media YouTube';
+$_lang['setting_socialmedia.source_youtube_client_id']                  = 'YouTube client ID';
+$_lang['setting_socialmedia.source_youtube_client_id_desc']             = 'De YouTube client ID, deze is te verkrijgen via https://console.developers.google.com/.';
+$_lang['setting_socialmedia.source_youtube_client_secret']              = 'YouTube client secret';
+$_lang['setting_socialmedia.source_youtube_client_secret_desc']         = 'De YouTube client secret, deze is te verkrijgen via https://console.developers.google.com/.';
+$_lang['setting_socialmedia.source_youtube_refresh_token']              = 'YouTube refresh token';
+$_lang['setting_socialmedia.source_youtube_refresh_token_desc']         = 'De YouTube refresh token, deze is te verkrijgen via oAuth met de minimale scope "https://www.googleapis.com/auth/youtube.readonly".';
 $_lang['setting_socialmedia.source_youtube_empty_posts']                = 'Youtube "Onbekend of leeg bericht" weergegeven.';
-$_lang['setting_socialmedia.source_youtube_empty_posts_desc']           = 'Indien ja, worden de Youtube berichten met "Onbekend of leeg bericht" weergegeven.';
+$_lang['setting_socialmedia.source_youtube_empty_posts_desc']           = 'Indien ja, worden de YouTube berichten met "Onbekend of leeg bericht" weergegeven.';
 
 $_lang['area_socialmedia_linkedin']                                     = 'Social Media LinkedIn';
 $_lang['setting_socialmedia.source_linkedin_client_id']                 = 'LinkedIn client ID';
