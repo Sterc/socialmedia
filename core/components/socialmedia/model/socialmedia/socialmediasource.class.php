@@ -46,15 +46,31 @@ class SocialMediaSource
 
     /**
      * @access public.
+     * @param Array $credentials,
      * @return Object.
      */
-    public function getSource()
+    public function getSource(array $credentials = [])
     {
         if (null === $this->source) {
-            $this->setSource();
+            $this->setSource($credentials);
         }
 
         return $this->source;
+    }
+
+    /**
+     * @access public.
+     * @return Array.
+     */
+    public function getFields()
+    {
+        $source = $this->getSource();
+
+        if (method_exists($source, 'getApiFields')) {
+            return $source->getApiFields();
+        }
+
+        return [];
     }
 
     /**

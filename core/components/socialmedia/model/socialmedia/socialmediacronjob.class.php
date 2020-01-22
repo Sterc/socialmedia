@@ -321,12 +321,12 @@ class SocialMediaCronjob extends SocialMedia
         ]);
 
         foreach ((array) $this->getCriteria() as $criteria) {
-            $source = $this->getSource($criteria['source']);
+            $source = $this->getSource($criteria->get('source'));
 
             if ($source) {
-                $this->log('Import process for `' . $source->getName() . '` with criteria `' . $criteria['criteria'] .'`.');
+                $this->log('Import process for `' . $source->getName() . '` with criteria `' . $criteria->get('criteria') .'`.');
 
-                $response = $source->getData($criteria['criteria']);
+                $response = $source->getData($criteria->get('criteria'), $criteria->getCredentials());
 
                 if ((int) $response['code'] === 200) {
                     $count = [
@@ -352,7 +352,7 @@ class SocialMediaCronjob extends SocialMedia
 
                         if ($message) {
                             $message->fromArray(array_merge($data, [
-                                'criteria_id' => $criteria['id']
+                                'criteria_id' => $criteria->get('id')
                             ]));
 
                             $message->save();
@@ -361,12 +361,12 @@ class SocialMediaCronjob extends SocialMedia
 
                     $this->log(' - Created ' . count($count['create']) . ' messages.');
                     $this->log(' - Updated ' . count($count['update']) . ' messages.');
-                    $this->log('Import process for `' . $source->getName() . '` with criteria `' . $criteria['criteria'] .'` succeed.', 'success');
+                    $this->log('Import process for `' . $source->getName() . '` with criteria `' . $criteria->get('criteria') .'` succeed.', 'success');
                 } else {
-                    $this->log('Import process for `' . $source->getName() . '` with criteria `' . $criteria['criteria'] .'` failed `' . $response['message'] . '`.', 'error');
+                    $this->log('Import process for `' . $source->getName() . '` with criteria `' . $criteria->get('criteria') .'` failed `' . $response['message'] . '`.', 'error');
                 }
             } else {
-                $this->log('Cannot initialize service for "' . $criteria['source'] . '".', 'error');
+                $this->log('Cannot initialize service for "' . $criteria->get('criteria') . '".', 'error');
             }
         }
 

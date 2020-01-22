@@ -15,29 +15,25 @@ class Youtube extends SocialMediaSourceRequest
 
     /**
      * @access public.
-     * @return String.
+     * @return Array.
      */
-    public function getApiKey()
+    public function getApiFields()
     {
-        return $this->modx->getOption('socialmedia.source_youtube_client_id');
-    }
-
-    /**
-     * @access public.
-     * @return String.
-     */
-    public function getApiSecret()
-    {
-        return $this->modx->getOption('socialmedia.source_youtube_client_secret');
-    }
-
-    /**
-     * @access public.
-     * @return String.
-     */
-    public function getApiAccessToken()
-    {
-        return $this->getApiRefreshAccessToken();
+        return [
+            [
+                'name'          => 'client_id',
+                'label'         => $this->modx->lexicon('socialmedia.label_youtube_client_id'),
+                'description'   => $this->modx->lexicon('socialmedia.label_youtube_client_id_desc'),
+            ], [
+                'name'          => 'client_secret',
+                'label'         => $this->modx->lexicon('socialmedia.label_youtube_client_secret'),
+                'description'   => $this->modx->lexicon('socialmedia.label_youtube_client_secret_desc'),
+            ], [
+                'name'          => 'refresh_token',
+                'label'         => $this->modx->lexicon('socialmedia.label_youtube_refresh_token'),
+                'description'   => $this->modx->lexicon('socialmedia.label_youtube_refresh_token_desc'),
+            ]
+        ];
     }
 
     /**
@@ -48,14 +44,14 @@ class Youtube extends SocialMediaSourceRequest
      * @param Array $options.
      * @return Array.
      */
-    public function makeRequest($endpoint, array $parameters = [], $method = 'GET', array $options = [])
+    public function getApiData($endpoint, array $parameters = [], $method = 'GET', array $options = [])
     {
         if (strpos($endpoint, 'https://') !== 0 && strpos($endpoint, 'http://') !== 0) {
             $endpoint = rtrim(Youtube::API_URL, '/') . '/' . rtrim($endpoint, '/') . '/';
         }
 
         $parameters = array_merge($parameters, [
-            'access_token' => $this->getApiAccessToken()
+            'access_token' => $this->getApiRefreshAccessToken()
         ]);
 
         return $this->makeApiRequest($endpoint, $parameters, $method, $options);
@@ -67,9 +63,9 @@ class Youtube extends SocialMediaSourceRequest
      */
     public function getApiRefreshAccessToken() {
         $parameters = [
-            'refresh_token'     => $this->modx->getOption('socialmedia.source_youtube_refresh_token'),
-            'client_id'         => $this->getApiKey(),
-            'client_secret'     => $this->getApiSecret(),
+            'refresh_token'     => $this->getCredential('refresh_token'),
+            'client_id'         => $this->getCredential('client_id'),
+            'client_secret'     => $this->getCredential('client_secret'),
             'grant_type'        => 'refresh_token'
         ];
 

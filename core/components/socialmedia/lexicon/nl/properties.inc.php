@@ -18,3 +18,4 @@ $_lang['socialmedia.snippet_tpl_desc']                                  = 'De te
 $_lang['socialmedia.snippet_tplwrapper_desc']                           = 'De template van de wrapper van de social media berichten, dit kan een chunk naam, @FILE of @INLINE zijn.';
 $_lang['socialmedia.snippet_tplgroup_desc']                             = 'De template een criteria wanneer de social media berichten geroepeerd worden, dit kan een chunk naam, @FILE of @INLINE zijn.';
 $_lang['socialmedia.snippet_tpls_desc']                                 = 'De templates voor de verschillende social media berichten. Dit is een JSON object met verzamelingen van \'tpls\', bijvoorbeeld "{"facebook": "chunkname"}". Standaard is "{}".';
+$_lang['socialmedia.snippet_pinenabled_desc']                           = 'Vastgezette berichten boven aan weergeven.';

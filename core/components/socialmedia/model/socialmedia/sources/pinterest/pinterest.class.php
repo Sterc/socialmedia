@@ -14,29 +14,25 @@ class Pinterest extends SocialMediaSourceRequest
 
     /**
      * @access public.
-     * @return String.
+     * @return Array.
      */
-    public function getApiKey()
+    public function getApiFields()
     {
-        return $this->modx->getOption('socialmedia.source_pinterest_client_id');
-    }
-
-    /**
-     * @access public.
-     * @return String.
-     */
-    public function getApiSecret()
-    {
-        return $this->modx->getOption('socialmedia.source_pinterest_client_secret');
-    }
-
-    /**
-     * @access public.
-     * @return String.
-     */
-    public function getApiAccessToken()
-    {
-        return $this->modx->getOption('socialmedia.source_pinterest_access_token');
+        return [
+            [
+                'name'          => 'client_id',
+                'label'         => $this->modx->lexicon('socialmedia.label_pinterest_client_id'),
+                'description'   => $this->modx->lexicon('socialmedia.label_pinterest_client_id_desc'),
+            ], [
+                'name'          => 'client_secret',
+                'label'         => $this->modx->lexicon('socialmedia.label_pinterest_client_secret'),
+                'description'   => $this->modx->lexicon('socialmedia.label_pinterest_client_secret_desc'),
+            ], [
+                'name'          => 'access_token',
+                'label'         => $this->modx->lexicon('socialmedia.label_pinterest_access_token'),
+                'description'   => $this->modx->lexicon('socialmedia.label_pinterest_access_token_desc'),
+            ]
+        ];
     }
 
     /**
@@ -47,14 +43,14 @@ class Pinterest extends SocialMediaSourceRequest
      * @param Array $options.
      * @return Array.
      */
-    public function makeRequest($endpoint, array $parameters = [], $method = 'GET', array $options = [])
+    public function getApiData($endpoint, array $parameters = [], $method = 'GET', array $options = [])
     {
         if (strpos($endpoint, 'https://') !== 0 && strpos($endpoint, 'http://') !== 0) {
             $endpoint = rtrim(Pinterest::API_URL, '/') . '/' . rtrim($endpoint, '/') . '/';
         }
 
         $parameters = array_merge($parameters, [
-            'access_token' => $this->getApiAccessToken()
+            'access_token' => $this->getCredential('access_token')
         ]);
 
         return $this->makeApiRequest($endpoint, $parameters, $method, $options);

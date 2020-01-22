@@ -33,11 +33,21 @@ class SocialMediaSourcesGetListProcessor extends modProcessor
 
     /**
      * @access public.
-     * @return Array.
+     * @return String.
      */
     public function process()
     {
-        return $this->outputArray(array_values($this->modx->socialmedia->getAvailableSources()));
+        $output = [];
+
+        foreach ((array) $this->modx->socialmedia->getAvailableSources(true) as $source) {
+            $output[] = [
+                'type'      => strtolower($source->getName()),
+                'label'     => $source->getName(),
+                'fields'    => $source->getFields()
+            ];
+        }
+
+        return $this->outputArray($output);
     }
 }
 

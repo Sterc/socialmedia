@@ -3,6 +3,13 @@ Social Media
 ----------------------
 
 ----------------------
+Version: 2.1.0
+Released: 2020-01-22
+----------------------
+- Pin/unpin message on top.
+- API credentials moved from system settings to criteria so multiple accounts can used.
+
+----------------------
 Version: 2.0.3
 Released: 2019-07-15
 ----------------------

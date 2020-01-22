@@ -55,6 +55,8 @@ class SocialMediaCriteriaUpdateProcessor extends modObjectUpdateProcessor
             ]));
         }
 
+        $this->object->set('credentials', json_encode($this->getProperty('credentials')));
+
         return parent::beforeSave();
     }
 }

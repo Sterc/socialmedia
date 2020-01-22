@@ -19,6 +19,7 @@ class SocialMediaSnippet extends SocialMediaSnippets
         'filter'                => '',
         'where'                 => '{"active": "1"}',
         'sortby'                => '{"created": "DESC"}',
+        'pinEnabled'            => true,
         'limit'                 => 10,
         'group'                 => '',
         'tpl'                   => '@FILE elements/chunks/item.chunk.tpl',
@@ -72,6 +73,10 @@ class SocialMediaSnippet extends SocialMediaSnippets
             }
 
             $criteria->where($filter, xPDOQuery::SQL_OR);
+        }
+
+        if ((boolean) $this->getProperty('pinEnabled')) {
+            $criteria->sortby('pin', 'DESC');
         }
 
         if ($sortby) {

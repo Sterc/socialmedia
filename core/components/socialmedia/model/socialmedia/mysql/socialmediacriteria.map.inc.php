@@ -18,6 +18,7 @@ $xpdo_meta_map['SocialMediaCriteria'] = [
         'id'            => null,
         'source'        => null,
         'criteria'      => null,
+        'credentials'   => null,
         'active'        => null,
         'createdon'     => null,
         'editedon'      => null
@@ -42,6 +43,12 @@ $xpdo_meta_map['SocialMediaCriteria'] = [
             'phptype'       => 'string',
             'null'          => false,
             'default'       => ''
+        ],
+        'credentials'   => [
+            'dbtype'        => 'text',
+            'phptype'       => 'string',
+            'null'          => true,
+            'default'       => '{}'
         ],
         'active'        => [
             'dbtype'        => 'int',

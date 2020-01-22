@@ -21,6 +21,12 @@ class SocialMediaSourceRequest
     public $name = '';
 
     /**
+     * @access public.
+     * @var Array.
+     */
+    public $credentials = [];
+
+    /**
      * @access protected.
      * @var Array.
      */
@@ -29,10 +35,12 @@ class SocialMediaSourceRequest
     /**
      * @access public.
      * @param modX $modx.
+     * @param Array $credentials.
      */
-    public function __construct(modX &$modx)
+    public function __construct(modX &$modx, array $credentials = [])
     {
         $this->modx =& $modx;
+        $this->credentials = $credentials;
     }
 
     /**
@@ -42,6 +50,38 @@ class SocialMediaSourceRequest
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @access public.
+     * @param Array $credentials.
+     */
+    public function setCredentials(array $credentials = [])
+    {
+        $this->credentials = $credentials;
+    }
+
+    /**
+     * @access public.
+     * @return Array.
+     */
+    public function getCredentials()
+    {
+        return $this->credentials;
+    }
+
+    /**
+     * @access public.
+     * @param String $key.
+     * @return String.
+     */
+    public function getCredential($key)
+    {
+        if (isset($this->credentials[$key])) {
+            return $this->credentials[$key];
+        }
+
+        return null;
     }
 
     /**
@@ -67,9 +107,9 @@ class SocialMediaSourceRequest
                CURLOPT_POSTFIELDS   => http_build_query($parameters)
            ] + $options;
         } else {
-            $options = array(
+            $options = [
                 CURLOPT_URL         => $endpoint . '?' . http_build_query($parameters)
-            ) + $options;
+            ] + $options;
         }
 
         $curl = curl_init();

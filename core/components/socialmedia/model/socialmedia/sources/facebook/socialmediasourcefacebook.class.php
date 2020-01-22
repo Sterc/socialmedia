@@ -19,66 +19,74 @@ class SocialMediaSourceFacebook extends SocialMediaSource
 
     /**
      * @access public.
+     * @param Array $credentials.
      */
-    public function setSource()
+    public function setSource(array $credentials = [])
     {
-        $this->source = new Facebook($this->modx);
+        $this->source = new Facebook($this->modx, $credentials);
     }
 
     /**
      * @access public.
      * @param String $criteria.
+     * @param Array $credentials.
      * @param Integer $limit.
      * @return Array.
      */
-    public function getData($criteria, $limit = 10)
+    public function getData($criteria, array $credentials = [], $limit = 10)
     {
-        if (strpos($criteria, '@') === 0) {
-            if (in_array($criteria, ['@me', '@self'], true)) {
-                $criteria = 'me';
-            } else if (strpos($criteria, '@ID:') === 0) {
-                $criteria = trim(substr($criteria, 4));
-            } else if (strpos($criteria, '@USERNAME:') === 0) {
-                $criteria = trim(substr($criteria, 10));
-            } else {
-                $criteria = substr($criteria, 1);
-            }
+        $source = $this->getSource($credentials);
 
-            $parameters = [
-                'fields' => 'id,name,link,picture.width(500).height(500)'
-            ];
-
-            $responseAccount = $this->getSource()->makeRequest($criteria, $parameters);
-
-            if ((int) $responseAccount['code'] === 200) {
-                $parameters = [
-                    'fields'    => 'id,from,message,created_time,full_picture,permalink_url,type,link,shares,comments.summary(true),likes.summary(true)',
-                    'limit'     => $limit
-                ];
-
-                $responseMessages = $this->getSource()->makeRequest($criteria . '/posts', $parameters);
-
-                if ((int) $responseMessages['code'] === 200) {
-                    $output = [];
-
-                    foreach ((array) $responseMessages['data']['data'] as $data) {
-                        $output[] = $this->getFormat($data, $responseAccount['data']);
-                    }
-
-                    return $this->setResponse($responseMessages['code'], $this->getDataSort($output));
+        if ($source) {
+            if (strpos($criteria, '@') === 0) {
+                if (in_array($criteria, ['@me', '@self'], true)) {
+                    $criteria = 'me';
+                } else if (strpos($criteria, '@ID:') === 0) {
+                    $criteria = trim(substr($criteria, 4));
+                } else if (strpos($criteria, '@USERNAME:') === 0) {
+                    $criteria = trim(substr($criteria, 10));
+                } else {
+                    $criteria = substr($criteria, 1);
                 }
 
-                return $this->setResponse($responseMessages['code'], $responseMessages['message']);
+                $parameters = [
+                    'fields' => 'id,name,link,picture.width(500).height(500)'
+                ];
+
+                $responseAccount = $source->getApiData($criteria, $parameters);
+
+                if ((int) $responseAccount['code'] === 200) {
+                    $parameters = [
+                        'fields'    => 'id,from,message,created_time,full_picture,permalink_url,type,link,shares,comments.summary(true),likes.summary(true)',
+                        'limit'     => $limit
+                    ];
+
+                    $responseMessages = $source->getApiData($criteria . '/posts', $parameters);
+
+                    if ((int) $responseMessages['code'] === 200) {
+                        $output = [];
+
+                        foreach ((array) $responseMessages['data']['data'] as $data) {
+                            $output[] = $this->getFormat($data, $responseAccount['data']);
+                        }
+
+                        return $this->setResponse($responseMessages['code'], $this->getDataSort($output));
+                    }
+
+                    return $this->setResponse($responseMessages['code'], $responseMessages['message']);
+                }
+
+                return $this->setResponse($responseAccount['code'], $responseAccount['message']);
             }
 
-            return $this->setResponse($responseAccount['code'], $responseAccount['message']);
-        }
+            if (strpos($criteria, '#') === 0) {
+                return $this->setResponse(500, 'API criteria method not supported.');
+            }
 
-        if (strpos($criteria, '#') === 0) {
             return $this->setResponse(500, 'API criteria method not supported.');
         }
 
-        return $this->setResponse(500, 'API criteria method not supported.');
+        return $this->setResponse(500, 'API credentials not supported.');
     }
 
     /**

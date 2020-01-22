@@ -18,3 +18,4 @@ $_lang['socialmedia.snippet_tpl_desc']                                  = 'The t
 $_lang['socialmedia.snippet_tplwrapper_desc']                           = 'The template of the wrapper of the social media messages, this can be a chunk name, @FILE or @INLINE.';
 $_lang['socialmedia.snippet_tplgroup_desc']                             = 'The template of an criteria when the social media messages needs to be grouped, this can be a chunk name, @FILE or @INLINE.';
 $_lang['socialmedia.snippet_tpls_desc']                                 = 'The templates for the various social media messages. This is a JSON object with collections of \'tpls\', for example "{"facebook": "chunkname"}". Default is "{}".';
+$_lang['socialmedia.snippet_pinenabled_desc']                           = 'Display pinned messages on top.';

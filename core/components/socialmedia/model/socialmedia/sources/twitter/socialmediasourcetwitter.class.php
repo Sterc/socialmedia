@@ -19,70 +19,78 @@ class SocialMediaSourceTwitter extends SocialMediaSource
 
     /**
      * @access public.
+     * @param Array $credentials.
      */
-    public function setSource()
+    public function setSource(array $credentials = [])
     {
-        $this->source = new Twitter($this->modx);
+        $this->source = new Twitter($this->modx, $credentials);
     }
 
     /**
      * @access public.
      * @param String $criteria.
+     * @param Array $credentials.
      * @param Integer $limit.
      * @return Array.
      */
-    public function getData($criteria, $limit = 10)
+    public function getData($criteria, array $credentials = [], $limit = 10)
     {
-        if (strpos($criteria, '@') === 0) {
-            if (in_array($criteria, ['@me', '@self'], true)) {
-                $parameters = [
-                    'count' => $limit
-                ];
-            } else {
-                $parameters = [
-                    'screen_name'       => substr($criteria, 1),
-                    'count'             => $limit
-                ];
-            }
+        $source = $this->getSource($credentials);
 
-            $responseMessages = $this->getSource()->makeRequest('statuses/user_timeline', $parameters);
-
-            if ((int) $responseMessages['code'] === 200) {
-                $output = [];
-
-                foreach ((array) $responseMessages['data'] as $data) {
-                    $output[] = $this->getFormat($data);
+        if ($source) {
+            if (strpos($criteria, '@') === 0) {
+                if (in_array($criteria, ['@me', '@self'], true)) {
+                    $parameters = [
+                        'count' => $limit
+                    ];
+                } else {
+                    $parameters = [
+                        'screen_name'       => substr($criteria, 1),
+                        'count'             => $limit
+                    ];
                 }
 
-                return $this->setResponse($responseMessages['code'], $this->getDataSort($output));
-            }
+                $responseMessages = $source->getApiData('statuses/user_timeline', $parameters);
 
-            return $this->setResponse($responseMessages['code'], $responseMessages['message']);
-        }
+                if ((int) $responseMessages['code'] === 200) {
+                    $output = [];
 
-        if (strpos($criteria, '#') === 0) {
-            $parameters = [
-                'q'             => $criteria,
-                'count'         => $limit,
-                'result_type'   => 'recent'
-            ];
+                    foreach ((array) $responseMessages['data'] as $data) {
+                        $output[] = $this->getFormat($data);
+                    }
 
-            $responseMessages = $this->getSource()->makeRequest('search/tweets', $parameters);
-
-            if ((int) $responseMessages['code'] === 200) {
-                $output = [];
-
-                foreach ((array) $responseMessages['data'] as $data) {
-                    $output[] = $this->getFormat($data);
+                    return $this->setResponse($responseMessages['code'], $this->getDataSort($output));
                 }
 
-                return $this->setResponse($responseMessages['code'], $this->getDataSort($output));
+                return $this->setResponse($responseMessages['code'], $responseMessages['message']);
             }
 
-            return $this->setResponse($responseMessages['code'], $responseMessages['message']);
+            if (strpos($criteria, '#') === 0) {
+                $parameters = [
+                    'q'             => $criteria,
+                    'count'         => $limit,
+                    'result_type'   => 'recent'
+                ];
+
+                $responseMessages = $source->getApiData('search/tweets', $parameters);
+
+                if ((int) $responseMessages['code'] === 200) {
+                    $output = [];
+
+                    foreach ((array) $responseMessages['data'] as $data) {
+                        $output[] = $this->getFormat($data);
+                    }
+
+                    return $this->setResponse($responseMessages['code'], $this->getDataSort($output));
+                }
+
+                return $this->setResponse($responseMessages['code'], $responseMessages['message']);
+            }
+
+            return $this->setResponse(500, 'API criteria method not supported.');
         }
 
-        return $this->setResponse(500, 'API criteria method not supported.');
+        return $this->setResponse(500, 'API credentials not supported.');
     }
 
     /**

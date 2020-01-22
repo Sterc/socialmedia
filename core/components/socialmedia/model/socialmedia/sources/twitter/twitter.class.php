@@ -13,39 +13,30 @@ class Twitter extends SocialMediaSourceRequest
     const API_URL = 'https://api.twitter.com/1.1/';
 
     /**
-     * @access private.
-     * @return String.
+     * @access public.
+     * @return Array.
      */
-    private function getConsumerKey()
+    public function getApiFields()
     {
-        return $this->modx->getOption('socialmedia.source_twitter_consumer_key');
-    }
-
-    /**
-     * @access private.
-     * @return String.
-     */
-    private function getConsumerKeySecret()
-    {
-        return $this->modx->getOption('socialmedia.source_twitter_consumer_key_secret');
-    }
-
-    /**
-    * @access private.
-    * @return String.
-    */
-    private function getAccesToken()
-    {
-        return $this->modx->getOption('socialmedia.source_twitter_access_token');
-    }
-
-    /**
-     * @access private.
-     * @return String.
-     */
-    private function getAccesTokenSecret()
-    {
-        return $this->modx->getOption('socialmedia.source_twitter_access_token_secret');
+        return [
+            [
+                'name'          => 'consumer_key',
+                'label'         => $this->modx->lexicon('socialmedia.label_twitter_consumer_key'),
+                'description'   => $this->modx->lexicon('socialmedia.label_twitter_consumer_key_desc'),
+            ], [
+                'name'          => 'consumer_key_secret',
+                'label'         => $this->modx->lexicon('socialmedia.label_twitter_consumer_key_secret'),
+                'description'   => $this->modx->lexicon('socialmedia.label_twitter_consumer_key_secret_desc'),
+            ], [
+                'name'          => 'access_token',
+                'label'         => $this->modx->lexicon('socialmedia.label_twitter_access_token'),
+                'description'   => $this->modx->lexicon('socialmedia.label_twitter_access_token_desc'),
+            ], [
+                'name'          => 'access_token_secret',
+                'label'         => $this->modx->lexicon('socialmedia.label_twitter_access_token_secret'),
+                'description'   => $this->modx->lexicon('socialmedia.label_twitter_access_token_secret_desc'),
+            ]
+        ];
     }
 
     /**
@@ -56,7 +47,7 @@ class Twitter extends SocialMediaSourceRequest
      * @param Array $options.
      * @return Array.
      */
-    public function makeRequest($endpoint, array $parameters = [], $method = 'GET', array $options = [])
+    public function getApiData($endpoint, array $parameters = [], $method = 'GET', array $options = [])
     {
         if (strpos($endpoint, 'https://') !== 0 && strpos($endpoint, 'http://') !== 0) {
             $endpoint = rtrim(Twitter::API_URL, '/') . '/' . rtrim($endpoint, '/') . '.json';
@@ -82,10 +73,10 @@ class Twitter extends SocialMediaSourceRequest
     private function buildOAuth($endpoint, $method, array $parameters = [])
     {
         $oauth = [
-            'oauth_consumer_key'        => $this->getConsumerKey(),
+            'oauth_consumer_key'        => $this->getCredential('consumer_key'),
             'oauth_nonce'               => time(),
             'oauth_signature_method'    => 'HMAC-SHA1',
-            'oauth_token'               => $this->getAccesToken(),
+            'oauth_token'               => $this->getCredential('access_token'),
             'oauth_timestamp'           => time(),
             'oauth_version'             => '1.0'
         ];
@@ -96,7 +87,7 @@ class Twitter extends SocialMediaSourceRequest
             }
         }
 
-        $oauth['oauth_signature'] = base64_encode(hash_hmac('sha1', $this->buildOAuthString($endpoint, $method, $oauth), rawurlencode($this->getConsumerKeySecret()) . '&' . rawurlencode($this->getAccesTokenSecret()), true));
+        $oauth['oauth_signature'] = base64_encode(hash_hmac('sha1', $this->buildOAuthString($endpoint, $method, $oauth), rawurlencode($this->getCredential('consumer_key_secret')) . '&' . rawurlencode($this->getCredential('access_token_secret')), true));
 
         return $oauth;
     }

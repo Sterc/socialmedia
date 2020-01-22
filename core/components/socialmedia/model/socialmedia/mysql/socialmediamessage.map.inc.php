@@ -30,6 +30,7 @@ $xpdo_meta_map['SocialMediaMessage'] = [
         'likes'         => null,
         'comments'      => null,
         'active'        => null,
+        'pin'           => null,
         'created'       => null
     ],
     'fieldMeta'     => array(
@@ -133,6 +134,13 @@ $xpdo_meta_map['SocialMediaMessage'] = [
             'phptype'       => 'integer',
             'null'          => false,
             'default'       => 1
+        ],
+        'pin'           => [
+            'dbtype'        => 'int',
+            'precision'     => '1',
+            'phptype'       => 'integer',
+            'null'          => false,
+            'default'       => 0
         ],
         'created'       => [
             'dbtype'        => 'timestamp',

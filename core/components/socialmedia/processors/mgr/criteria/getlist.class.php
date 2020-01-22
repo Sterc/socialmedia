@@ -79,7 +79,9 @@ class SocialMediaCriteriaGetListProcessor extends modObjectGetListProcessor
      */
     public function prepareRow(xPDOObject $object)
     {
-        $array = $object->toArray();
+        $array = array_merge($object->toArray(), [
+            'credentials' => $object->getCredentials()
+        ]);
 
         if (in_array($object->get('createdon'), ['-001-11-30 00:00:00', '-1-11-30 00:00:00', '0000-00-00 00:00:00', null], true)) {
             $array['createdon'] = '';

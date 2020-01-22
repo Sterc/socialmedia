@@ -3,7 +3,7 @@
     "lowCaseName": "socialmedia",
     "description": "A social media solution for MODx Revolution.",
     "author": "Sterc",
-    "version": "2.0.3-pl",
+    "version": "2.1.0-pl",
     "package":{
         "menus": [{
             "text": "socialmedia",
@@ -35,6 +35,11 @@
                     "name": "limit",
                     "value": "10",
                     "description": "socialmedia.snippet_limit_desc"
+                },{
+                    "type": "combo-boolean",
+                    "name": "pinEnabled",
+                    "value": "1",
+                    "description": "socialmedia.snippet_pinenabled_desc"
                 },{
                     "name": "where",
                     "value": "{\"active\": \"1\"}",
@@ -106,92 +111,35 @@
             "value": "/uploads/socialmedia/",
             "area": "socialmedia"
         },{
-            "key": "source_facebook_access_token",
-            "area": "socialmedia_facebook"
-        },{
-            "key": "source_facebook_client_id",
-            "area": "socialmedia_facebook"
-        },{
-            "key": "source_facebook_client_secret",
-            "area": "socialmedia_facebook"
-        },{
             "type": "combo-boolean",
             "key": "source_facebook_empty_posts",
             "value": "0",
-            "area": "socialmedia_facebook"
-        },{
-            "key": "source_instagram_access_token",
-            "area": "socialmedia_instagram"
-        },{
-            "key": "source_instagram_client_id",
-            "area": "socialmedia_instagram"
-        },{
-            "key": "source_instagram_client_secret",
-            "area": "socialmedia_instagram"
+            "area": "socialmedia"
         },{
             "type": "combo-boolean",
             "key": "source_instagram_empty_posts",
             "value": "1",
-            "area": "socialmedia_instagram"
-        },{
-            "key": "source_linkedin_access_token",
-            "area": "socialmedia_linkedin"
-        },{
-            "key": "source_linkedin_client_id",
-            "area": "socialmedia_linkedin"
-        },{
-            "key": "source_linkedin_client_secret",
-            "area": "socialmedia_linkedin"
+            "area": "socialmedia"
         },{
             "type": "combo-boolean",
             "key": "source_linkedin_empty_posts",
             "value": "0",
-            "area": "socialmedia_linkedin"
-        },{
-            "key": "source_pinterest_access_token",
-            "area": "socialmedia_pinterest"
-        },{
-            "key": "source_pinterest_client_id",
-            "area": "socialmedia_pinterest"
-        },{
-            "key": "source_pinterest_client_secret",
-            "area": "socialmedia_pinterest"
+            "area": "socialmedia"
         },{
             "type": "combo-boolean",
             "key": "source_pinterest_empty_posts",
             "value": "0",
-            "area": "socialmedia_pinterest"
-        },{
-            "key": "source_twitter_access_token",
-            "area": "socialmedia_twitter"
-        },{
-            "key": "source_twitter_access_token_secret",
-            "area": "socialmedia_twitter"
-        },{
-            "key": "source_twitter_consumer_key",
-            "area": "socialmedia_twitter"
-        },{
-            "key": "source_twitter_consumer_key_secret",
-            "area": "socialmedia_twitter"
+            "area": "socialmedia"
         },{
             "type": "combo-boolean",
             "key": "source_twitter_empty_posts",
             "value": "0",
-            "area": "socialmedia_twitter"
-        },{
-            "key": "source_youtube_client_id",
-            "area": "socialmedia_youtube"
-        },{
-            "key": "source_youtube_client_secret",
-            "area": "socialmedia_youtube"
-        },{
-            "key": "source_youtube_refresh_token",
-            "area": "socialmedia_youtube"
+            "area": "socialmedia"
         },{
             "type": "combo-boolean",
             "key": "source_youtube_empty_posts",
             "value": "0",
-            "area": "socialmedia_youtube"
+            "area": "socialmedia"
         }]
     },
     "build":{

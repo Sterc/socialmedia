@@ -19,74 +19,83 @@ class SocialMediaSourceInstagram extends SocialMediaSource
 
     /**
      * @access public.
+     * @param Array $credentials.
      */
-    public function setSource() {
-        $this->source = new Instagram($this->modx);
+    public function setSource(array $credentials = [])
+    {
+        $this->source = new Instagram($this->modx, $credentials);
     }
 
     /**
      * @access public.
      * @param String $criteria.
+     * @param Array $credentials.
      * @param Integer $limit.
      * @return Array.
      */
-    public function getData($criteria, $limit = 10)
+    public function getData($criteria, array $credentials = [], $limit = 10)
     {
-        if (strpos($criteria, '@') === 0) {
-            if (strpos($criteria, '@ID:') === 0) {
-                $criteria = trim(substr($criteria, 4));
-            } else if (strpos($criteria, '@USERNAME:') === 0) {
-                $criteria = trim(substr($criteria, 10));
-            } else {
+        $source = $this->getSource($credentials);
+
+        if ($source) {
+            if (strpos($criteria, '@') === 0) {
+                if (strpos($criteria, '@ID:') === 0) {
+                    $criteria = trim(substr($criteria, 4));
+                } else if (strpos($criteria, '@USERNAME:') === 0) {
+                    $criteria = trim(substr($criteria, 10));
+                } else {
+                    $criteria = substr($criteria, 1);
+                }
+
+                $parameters = [
+                    'count' => $limit
+                ];
+
+                $responseMessages = $source->getApiData('users/' . $criteria . '/media/recent', $parameters);
+
+                if ((int) $responseMessages['code'] === 200) {
+                    if (isset($responseMessages['data']['data'])) {
+                        $output = [];
+
+                        foreach ((array) $responseMessages['data']['data'] as $message) {
+                            $output[] = $this->getFormat($message);
+                        }
+
+                        return $this->setResponse($responseMessages['code'], $this->getDataSort($output));
+                    }
+                }
+
+                return $this->setResponse($responseMessages['code'], $responseMessages['message']);
+            }
+
+            if (strpos($criteria, '#') === 0) {
                 $criteria = substr($criteria, 1);
-            }
 
-            $parameters = [
-                'count' => $limit
-            ];
+                $parameters = [
+                    'count' => $limit
+                ];
 
-            $responseMessages = $this->getSource()->makeRequest('users/' . $criteria . '/media/recent', $parameters);
+                $responseMessages = $source->getApiData('tags/' . $criteria . '/media/recent', $parameters);
 
-            if ((int) $responseMessages['code'] === 200) {
-                if (isset($responseMessages['data']['data'])) {
-                    $output = [];
+                if ((int) $responseMessages['code'] === 200) {
+                    if (isset($responseMessages['data']['data'])) {
+                        $output = [];
 
-                    foreach ((array) $responseMessages['data']['data'] as $message) {
-                        $output[] = $this->getFormat($message);
+                        foreach ((array) $responseMessages['data']['data'] as $message) {
+                            $output[] = $this->getFormat($message);
+                        }
+
+                        return $this->setResponse($responseMessages['code'], $this->getDataSort($output));
                     }
-
-                    return $this->setResponse($responseMessages['code'], $this->getDataSort($output));
                 }
+
+                return $this->setResponse($responseMessages['code'], $responseMessages['message']);
             }
 
-            return $this->setResponse($responseMessages['code'], $responseMessages['message']);
+            return $this->setResponse(500, 'API criteria method not supported.');
         }
 
-        if (strpos($criteria, '#') === 0) {
-            $criteria = substr($criteria, 1);
-
-            $parameters = [
-                'count' => $limit
-            ];
-
-            $responseMessages = $this->getSource()->makeRequest('tags/' . $criteria . '/media/recent', $parameters);
-
-            if ((int) $responseMessages['code'] === 200) {
-                if (isset($responseMessages['data']['data'])) {
-                    $output = [];
-
-                    foreach ((array) $responseMessages['data']['data'] as $message) {
-                        $output[] = $this->getFormat($message);
-                    }
-
-                    return $this->setResponse($responseMessages['code'], $this->getDataSort($output));
-                }
-            }
-
-            return $this->setResponse($responseMessages['code'], $responseMessages['message']);
-        }
-
-        return $this->setResponse(500, 'API criteria method not supported.');
+        return $this->setResponse(500, 'API credentials not supported.');
     }
 
     /**

@@ -95,6 +95,8 @@ class SocialMediaMessagesGetListProcessor extends modObjectGetListProcessor
             ]);
         }
 
+        $criteria->sortby('pin', 'DESC');
+
         return $criteria;
     }
 

@@ -34,7 +34,17 @@ $_lang['setting_socialmedia.download_image_desc']                       = 'When 
 $_lang['setting_socialmedia.image_path']                                = 'Images directory';
 $_lang['setting_socialmedia.image_path_desc']                           = 'The directory where the images of the social media messages will be downloaden.';
 
-$_lang['area_socialmedia_twitter']                                      = 'Social Media Twitter';
+$_lang['setting_socialmedia.source_twitter_empty_posts']                = 'Twitter "Unknown or empty message" show.';
+$_lang['setting_socialmedia.source_twitter_empty_posts_desc']           = 'If yes, the Twitter message with "Unknown or empty message" will shown.';
+$_lang['setting_socialmedia.source_facebook_empty_posts']               = 'Facebook "Unknown or empty message" show.';
+$_lang['setting_socialmedia.source_facebook_empty_posts_desc']          = 'If yes, the Facebook message with "Unknown or empty message" will shown.';
+$_lang['setting_socialmedia.source_instagram_empty_posts']              = 'Instagram "Unknown or empty message" show.';
+$_lang['setting_socialmedia.source_instagram_empty_posts_desc']         = 'If yes, the Instagram message with "Unknown or empty message" will shown.';
+$_lang['setting_socialmedia.source_youtube_empty_posts']                = 'Youtube "Unknown or empty message" show.';
+$_lang['setting_socialmedia.source_youtube_empty_posts_desc']           = 'If yes, the Youtube message with "Unknown or empty message" will shown.';
+$_lang['setting_socialmedia.source_linkedin_empty_posts']               = 'LinkedIn "Unknown or empty message" show.';
+$_lang['setting_socialmedia.source_linkedin_empty_posts_desc']          = 'If yes, the LinkedIn message with "Unknown or empty message" will shown.';
+
 $_lang['setting_socialmedia.source_twitter_access_token']               = 'Twitter access token';
 $_lang['setting_socialmedia.source_twitter_access_token_desc']          = 'The Twitter access token, you can get this at https://dev.twitter.com/.';
 $_lang['setting_socialmedia.source_twitter_access_token_secret']        = 'Twitter access token secret';
@@ -43,58 +53,43 @@ $_lang['setting_socialmedia.source_twitter_consumer_key']               = 'Twitt
 $_lang['setting_socialmedia.source_twitter_consumer_key_desc']          = 'The Twitter consumer key, you can get this at https://dev.twitter.com/.';
 $_lang['setting_socialmedia.source_twitter_consumer_key_secret']        = 'Twitter consumer key secret';
 $_lang['setting_socialmedia.source_twitter_consumer_key_secret_desc']   = 'The Twitter consumer key secret, you can get this at https://dev.twitter.com/.';
-$_lang['setting_socialmedia.source_twitter_empty_posts']                = 'Twitter "Unknown or empty message" show.';
-$_lang['setting_socialmedia.source_twitter_empty_posts_desc']           = 'If yes, the Twitter message with "Unknown or empty message" will shown.';
-
-$_lang['area_socialmedia_facebook']                                     = 'Social Media Facebook';
-$_lang['setting_socialmedia.source_facebook_client_id']                 = 'Facebook client ID';
-$_lang['setting_socialmedia.source_facebook_client_id_desc']            = 'The Facebook client ID, you can get this at https://developers.facebook.com/.';
-$_lang['setting_socialmedia.source_facebook_client_secret']             = 'Facebook client secret';
-$_lang['setting_socialmedia.source_facebook_client_secret_desc']        = 'The Facebook client secret, you can get this at https://developers.facebook.com/.';
-$_lang['setting_socialmedia.source_facebook_access_token']              = 'Facebook access token';
-$_lang['setting_socialmedia.source_facebook_access_token_desc']         = 'The Facebook access token, you can get this at oAuth with the minimum scope "user_posts".';
-$_lang['setting_socialmedia.source_facebook_empty_posts']               = 'Facebook "Unknown or empty message" show.';
-$_lang['setting_socialmedia.source_facebook_empty_posts_desc']          = 'If yes, the Facebook message with "Unknown or empty message" will shown.';
-
-$_lang['area_socialmedia_instagram']                                    = 'Social Media Instagram';
-$_lang['setting_socialmedia.source_instagram_client_id']                = 'Instagram client ID';
-$_lang['setting_socialmedia.source_instagram_client_id_desc']           = 'The Instagram client ID, you can get this at https://www.instagram.com/developer/.';
-$_lang['setting_socialmedia.source_instagram_client_secret']            = 'Instagram client secret';
-$_lang['setting_socialmedia.source_instagram_client_secret_desc']       = 'The Instagram client secret, you can get this at https://www.instagram.com/developer/.';
-$_lang['setting_socialmedia.source_instagram_access_token']             = 'Instagram access token';
-$_lang['setting_socialmedia.source_instagram_access_token_desc']        = 'The Instagram access token, you can get this by https://instagram.pixelunion.net/.';
-$_lang['setting_socialmedia.source_instagram_empty_posts']              = 'Instagram "Unknown or empty message" show.';
-$_lang['setting_socialmedia.source_instagram_empty_posts_desc']         = 'If yes, the Instagram message with "Unknown or empty message" will shown.';
-
-$_lang['area_socialmedia_youtube']                                      = 'Social Media Youtube';
-$_lang['setting_socialmedia.source_youtube_client_id']                  = 'Youtube client ID';
-$_lang['setting_socialmedia.source_youtube_client_id_desc']             = 'The Youtube client ID, you can get this at https://console.developers.google.com/.';
-$_lang['setting_socialmedia.source_youtube_client_secret']              = 'Youtube client secret';
-$_lang['setting_socialmedia.source_youtube_client_secret_desc']         = 'The Youtube client secret, you can get this at https://console.developers.google.com/.';
-$_lang['setting_socialmedia.source_youtube_refresh_token']              = 'Youtube refresh token';
-$_lang['setting_socialmedia.source_youtube_refresh_token_desc']         = 'The Youtube refresh token, you can get this with oAuth with the minimum scope "https://www.googleapis.com/auth/youtube.readonly".';
-$_lang['setting_socialmedia.source_youtube_empty_posts']                = 'Youtube "Unknown or empty message" show.';
-$_lang['setting_socialmedia.source_youtube_empty_posts_desc']           = 'If yes, the Youtube message with "Unknown or empty message" will shown.';
-
-$_lang['area_socialmedia_linkedin']                                     = 'Social Media LinkedIn';
-$_lang['setting_socialmedia.source_linkedin_client_id']                 = 'LinkedIn client ID';
-$_lang['setting_socialmedia.source_linkedin_client_id_desc']            = 'The LinkedIn client ID, you can get this at https://www.linkedin.com/developer/.';
-$_lang['setting_socialmedia.source_linkedin_client_secret']             = 'LinkedIn client secret';
-$_lang['setting_socialmedia.source_linkedin_client_secret_desc']        = 'The LinkedIn client secret, you can get this at https://www.linkedin.com/developer/.';
-$_lang['setting_socialmedia.source_linkedin_access_token']              = 'LinkedIn access token';
-$_lang['setting_socialmedia.source_linkedin_access_token_desc']         = 'The LinkedIn access token, you can get this with oAuth with the minimum scope "rw_company_admin".';
-$_lang['setting_socialmedia.source_linkedin_empty_posts']               = 'LinkedIn "Unknown or empty message" show.';
-$_lang['setting_socialmedia.source_linkedin_empty_posts_desc']          = 'If yes, the LinkedIn message with "Unknown or empty message" will shown.';
-
-$_lang['area_socialmedia_pinterest']                                    = 'Social Media Pinterest';
-$_lang['setting_socialmedia.source_pinterest_client_id']                = 'Pinterest client ID';
-$_lang['setting_socialmedia.source_pinterest_client_id_desc']           = 'The Pinterest client ID, you can get this at https://developers.pinterest.com/.';
-$_lang['setting_socialmedia.source_pinterest_client_secret']            = 'Pinterest client secret';
-$_lang['setting_socialmedia.source_pinterest_client_secret_desc']       = 'The Pinterest client secret, you can get this at https://developers.pinterest.com/.';
-$_lang['setting_socialmedia.source_pinterest_access_token']             = 'Pinterest access token';
-$_lang['setting_socialmedia.source_pinterest_access_token_desc']        = 'The Pinterest access token, you can get this with oAuth with the minimum scope "read_public".';
 $_lang['setting_socialmedia.source_pinterest_empty_posts']              = 'Pinterest "Unknown or empty message" show.';
 $_lang['setting_socialmedia.source_pinterest_empty_posts_desc']         = 'If yes, the Pinterest message with "Unknown or empty message" will shown.';
+
+$_lang['socialmedia.label_facebook_client_id']                          = 'Facebook client ID';
+$_lang['socialmedia.label_facebook_client_id_desc']                     = 'The Facebook client ID, you can get this at https://developers.facebook.com/.';
+$_lang['socialmedia.label_facebook_client_secret']                      = 'Facebook client secret';
+$_lang['socialmedia.label_facebook_client_secret_desc']                 = 'The Facebook client secret, you can get this at https://developers.facebook.com/.';
+$_lang['socialmedia.label_facebook_access_token']                       = 'Facebook access token';
+$_lang['socialmedia.label_facebook_access_token_desc']                  = 'The Facebook access token, you can get this at oAuth with the minimum scope "user_posts".';
+
+$_lang['socialmedia.label_instagram_client_id']                         = 'Instagram client ID';
+$_lang['socialmedia.label_instagram_client_id_desc']                    = 'The Instagram client ID, you can get this at https://www.instagram.com/developer/.';
+$_lang['socialmedia.label_instagram_client_secret']                     = 'Instagram client secret';
+$_lang['socialmedia.label_instagram_client_secret_desc']                = 'The Instagram client secret, you can get this at https://www.instagram.com/developer/.';
+$_lang['socialmedia.label_instagram_access_token']                      = 'Instagram access token';
+$_lang['socialmedia.label_instagram_access_token_desc']                 = 'The Instagram access token, you can get this by https://instagram.pixelunion.net/.';
+
+$_lang['socialmedia.label_youtube_client_id']                           = 'Youtube client ID';
+$_lang['socialmedia.label_youtube_client_id_desc']                      = 'The Youtube client ID, you can get this at https://console.developers.google.com/.';
+$_lang['socialmedia.label_youtube_client_secret']                       = 'Youtube client secret';
+$_lang['socialmedia.label_youtube_client_secret_desc']                  = 'The Youtube client secret, you can get this at https://console.developers.google.com/.';
+$_lang['socialmedia.label_youtube_refresh_token']                       = 'Youtube refresh token';
+$_lang['socialmedia.label_youtube_refresh_token_desc']                  = 'The Youtube refresh token, you can get this with oAuth with the minimum scope "https://www.googleapis.com/auth/youtube.readonly".';
+
+$_lang['socialmedia.label_linkedin_client_id']                          = 'LinkedIn client ID';
+$_lang['socialmedia.label_linkedin_client_id_desc']                     = 'The LinkedIn client ID, you can get this at https://www.linkedin.com/developer/.';
+$_lang['socialmedia.label_linkedin_client_secret']                      = 'LinkedIn client secret';
+$_lang['socialmedia.label_linkedin_client_secret_desc']                 = 'The LinkedIn client secret, you can get this at https://www.linkedin.com/developer/.';
+$_lang['socialmedia.label_linkedin_access_token']                       = 'LinkedIn access token';
+$_lang['socialmedia.label_linkedin_access_token_desc']                  = 'The LinkedIn access token, you can get this with oAuth with the minimum scope "rw_company_admin".';
+
+$_lang['socialmedia.label_pinterest_client_id']                         = 'Pinterest client ID';
+$_lang['socialmedia.label_pinterest_client_id_desc']                    = 'The Pinterest client ID, you can get this at https://developers.pinterest.com/.';
+$_lang['socialmedia.label_pinterest_client_secret']                     = 'Pinterest client secret';
+$_lang['socialmedia.label_pinterest_client_secret_desc']                = 'The Pinterest client secret, you can get this at https://developers.pinterest.com/.';
+$_lang['socialmedia.label_pinterest_access_token']                      = 'Pinterest access token';
+$_lang['socialmedia.label_pinterest_access_token_desc']                 = 'The Pinterest access token, you can get this with oAuth with the minimum scope "read_public".';
 
 $_lang['socialmedia.criteria']                                          = 'Criteria';
 $_lang['socialmedia.criterias']                                         = 'Criteria';
@@ -115,6 +110,10 @@ $_lang['socialmedia.message']                                           = 'Messa
 $_lang['socialmedia.messages']                                          = 'Messages';
 $_lang['socialmedia.messages_desc']                                     = 'Manage here all the synchronized messages of the social media channels. Social media channels like <span class="twitter">Twitter</span>, <span class="instagram">Instagram</span>, <span class="facebook">Facebook</span>, <span class="linkedin">LinkedIn</span> or <span class="youtube">Youtube</span> will be synchronized automatically with MODX.';
 $_lang['socialmedia.message_show']                                      = 'Show on [[+source]]';
+$_lang['socialmedia.message_pin']                                       = 'Pin message';
+$_lang['socialmedia.message_pin_confirm']                               = 'Are you sure you want to pin this message on top?';
+$_lang['socialmedia.message_unpin']                                     = 'Unpin message';
+$_lang['socialmedia.message_unpin_confirm']                             = 'Are you sure you want to unpin this message on top?';
 $_lang['socialmedia.message_activate']                                  = 'Show message';
 $_lang['socialmedia.message_activate_confirm']                          = 'Are you sure you want to show this message?';
 $_lang['socialmedia.message_deactivate']                                = 'Hide message';

@@ -50,7 +50,7 @@ class SocialMedia
             'css_url'               => $assetsUrl . 'css/',
             'assets_url'            => $assetsUrl,
             'connector_url'         => $assetsUrl . 'connector.php',
-            'version'               => '2.0.3',
+            'version'               => '2.1.0',
             'branding_url'          => $this->modx->getOption('socialmedia.branding_url'),
             'branding_help_url'     => $this->modx->getOption('socialmedia.branding_url_help'),
             'cronjob'               => (bool) $this->modx->getOption('socialmedia.cronjob', null, false),
@@ -126,22 +126,11 @@ class SocialMedia
      */
     public function getCriteria()
     {
-        $output = [];
-
-        $criteria = $this->modx->newQuery('SocialMediaCriteria', [
+        return $this->modx->getCollection('SocialMediaCriteria', [
             'active' => 1
         ]);
-
-        foreach ((array) $this->modx->getCollection('SocialMediaCriteria', $criteria) as $criteria) {
-            $output[] = [
-                'id'        => $criteria->get('id'),
-                'source'    => $criteria->get('source'),
-                'criteria'  => $criteria->get('criteria')
-            ];
-        }
-
-        return $output;
     }
+
     /**
      * @access public.
      * @param Boolean $returnClasses.
@@ -155,17 +144,17 @@ class SocialMedia
             $filename = trim($file->getFilename(), '/');
 
             if (!in_array($filename, ['.', '..'], true) && $file->isDir()) {
-                if ($returnClasses) {
-                    $class = $this->getSource($filename);
+                $source = $this->getSource($filename);
 
-                    if ($class) {
-                        $sources[$filename] = $class;
+                if ($source) {
+                    if ($returnClasses) {
+                        $sources[strtolower($source->getName())] = $source;
+                    } else {
+                        $sources[strtolower($source->getName())] = [
+                            'type'  => strtolower($source->getName()),
+                            'label' => $source->getName()
+                        ];
                     }
-                } else {
-                    $sources[$filename] = [
-                        'type'  => $filename,
-                        'label' => ucfirst($filename)
-                    ];
                 }
             }
         }

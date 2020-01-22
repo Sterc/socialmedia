@@ -153,7 +153,7 @@ SocialMedia.grid.Messages = function(config) {
         },
         autosave    : true,
         save_action : 'mgr/messages/updatefromgrid',
-        fields      : ['id', 'criteria_id', 'key', 'source', 'user_name', 'user_account', 'user_image', 'user_account', 'user_url', 'content', 'image', 'video', 'url', 'likes', 'comments', 'active', 'created', 'time_ago'],
+        fields      : ['id', 'criteria_id', 'key', 'source', 'user_name', 'user_account', 'user_image', 'user_account', 'user_url', 'content', 'image', 'video', 'url', 'likes', 'comments', 'active', 'pin', 'created', 'time_ago'],
         paging      : true,
         pageSize    : MODx.config.default_per_page > 30 ? MODx.config.default_per_page : 30,
         sortBy      : 'created'
@@ -200,10 +200,10 @@ Ext.extend(SocialMedia.grid.Messages, MODx.grid.Grid, {
         var menu = [];
 
         menu.push({
-            text  : '<i class="x-menu-item-icon icon icon-external-link"></i>' + _('socialmedia.message_show', {
-                source : Ext.util.Format.capitalize(this.menu.record.source)
+            text    : '<i class="x-menu-item-icon icon icon-external-link"></i>' + _('socialmedia.message_show', {
+                source  : Ext.util.Format.capitalize(this.menu.record.source)
             }),
-            handler   : this.showMessage
+            handler : this.showMessage
         }, '-');
 
         if (parseInt(this.menu.record.active) === 1) {
@@ -215,6 +215,18 @@ Ext.extend(SocialMedia.grid.Messages, MODx.grid.Grid, {
             menu.push({
                 text    : '<i class="x-menu-item-icon icon icon-eye"></i>' + _('socialmedia.message_activate'),
                 handler : this.activateMessage
+            });
+        }
+
+        if (parseInt(this.menu.record.pin) === 1) {
+            menu.push({
+                text    : '<i class="x-menu-item-icon icon icon-star"></i>' + _('socialmedia.message_unpin'),
+                handler : this.unpinMessage
+            });
+        } else {
+            menu.push({
+                text    : '<i class="x-menu-item-icon icon icon-star"></i>' + _('socialmedia.message_pin'),
+                handler : this.pinMessage
             });
         }
 
@@ -250,6 +262,42 @@ Ext.extend(SocialMedia.grid.Messages, MODx.grid.Grid, {
                 action      : 'mgr/messages/update',
                 id          : this.menu.record.id,
                 active      : 0
+            },
+            listeners   : {
+                'success'   : {
+                    fn          : this.refresh,
+                    scope       : this
+                }
+            }
+        });
+    },
+    pinMessage: function(btn, e) {
+        MODx.msg.confirm({
+            title       : _('socialmedia.message_pin'),
+            text        : _('socialmedia.message_pin_confirm'),
+            url         : SocialMedia.config.connector_url,
+            params      : {
+                action      : 'mgr/messages/update',
+                id          : this.menu.record.id,
+                pin         : 1
+            },
+            listeners   : {
+                'success'   : {
+                    fn          : this.refresh,
+                    scope       : this
+                }
+            }
+        });
+    },
+    unpinMessage: function(btn, e) {
+        MODx.msg.confirm({
+            title       : _('socialmedia.message_unpin'),
+            text        : _('socialmedia.message_unpin_confirm'),
+            url         : SocialMedia.config.connector_url,
+            params      : {
+                action      : 'mgr/messages/update',
+                id          : this.menu.record.id,
+                pin         : 0
             },
             listeners   : {
                 'success'   : {
@@ -352,22 +400,28 @@ Ext.extend(SocialMedia.grid.Messages, MODx.grid.Grid, {
     renderSource: function(d, c, e) {
         c.css = e.json.source;
 
-        return String.format('<span class="icon icon-{0}"></span> {1}', d, Ext.util.Format.capitalize(d));
+        return '<span class="icon icon-' + d + '"></span> ' + Ext.util.Format.capitalize(d);
     },
     renderUserAccount: function(d, c, e) {
-        return String.format('<a href="{0}" target="_blank" title="{1}" class="x-grid-link">{2}</a>', e.json.user_url, d, d);
+        return '<a href="' + e.json.user_url + '" target="_blank" title="' + d + '" class="x-grid-link">' + d + '</a>';
     },
     renderContent: function(d, c, e) {
+        var pinned = '';
+
+        if (parseInt(e.json.pin) === 1) {
+            pinned = '<span class="icon icon-star"></span> ';
+        }
+
         if (Ext.isEmpty(d)) {
             d = '<i>' + _('socialmedia.unknow_message') + '</i>';
         }
 
-        return String.format('<a href="{0}" target="_blank" title="{1}" class="x-grid-link">{2}</a>', e.json.url, _('socialmedia.show_source', {
+        return pinned + '<a href="' + e.json.url + '" target="_blank" title="' + _('socialmedia.show_source', {
             'source' : Ext.util.Format.capitalize(e.json.source)
-        }), d);
+        }) + '" class="x-grid-link">' + d + '</a>';
     },
     renderReactions: function(d, c, e) {
-        return String.format('<span class="icon icon-thumbs-up"></span> <span class="x-grid-label">{0}</span> <span class="icon icon-comments"></span> <span class="x-grid-label">{1}</span>', e.json.likes, e.json.comments);
+        return '<span class="icon icon-thumbs-up"></span> <span class="x-grid-label">' + e.json.likes + '</span> <span class="icon icon-comments"></span> <span class="x-grid-label">' + e.json.comments + '</span>';
     },
     renderStatus: function(d, c) {
         c.css = parseInt(d) === 1 ? 'green' : 'red';

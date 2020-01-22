@@ -19,107 +19,115 @@ class SocialMediaSourceYoutube extends SocialMediaSource
 
     /**
      * @access public.
+     * @param Array $credentials.
      */
-    public function setSource()
+    public function setSource(array $credentials = [])
     {
-        $this->source = new Youtube($this->modx);
+        $this->source = new Youtube($this->modx, $credentials);
     }
 
     /**
      * @access public.
      * @param String $criteria.
+     * @param Array $credentials.
      * @param Integer $limit.
      * @return Array.
      */
-    public function getData($criteria, $limit = 10)
+    public function getData($criteria, array $credentials = [], $limit = 10)
     {
-        if (strpos($criteria, '@') === 0) {
-            $parameters = [];
+        $source = $this->getSource($credentials);
 
-            if (in_array($criteria, ['@me', '@self'], true)) {
-                $parameters['mine'] = 'true';
-            } else if (strpos($criteria, '@ID:') === 0) {
-                $parameters['id'] = trim(substr($criteria, 4));
-            } else if (strpos($criteria, '@USERNAME:') === 0) {
-                $parameters['forUsername'] = trim(substr($criteria, 10));
-            } else {
-                $parameters['forUsername'] = substr($criteria, 1);
-            }
+        if ($source) {
+            if (strpos($criteria, '@') === 0) {
+                $parameters = [];
 
-            $parameters = array_merge($parameters, [
-                'part' => 'snippet,contentDetails,status'
-            ]);
+                if (in_array($criteria, ['@me', '@self'], true)) {
+                    $parameters['mine'] = 'true';
+                } else if (strpos($criteria, '@ID:') === 0) {
+                    $parameters['id'] = trim(substr($criteria, 4));
+                } else if (strpos($criteria, '@USERNAME:') === 0) {
+                    $parameters['forUsername'] = trim(substr($criteria, 10));
+                } else {
+                    $parameters['forUsername'] = substr($criteria, 1);
+                }
 
-            $responseAccount = $this->getSource()->makeRequest('channels', $parameters);
+                $parameters = array_merge($parameters, [
+                    'part' => 'snippet,contentDetails,status'
+                ]);
 
-            if ((int) $responseAccount['code'] === 200) {
-                if (isset($responseAccount['data']['items'])) {
-                    $output = [];
+                $responseAccount = $source->getApiData('channels', $parameters);
 
-                    foreach ((array) $responseAccount['data']['items'] as $channel) {
-                        if (isset($channel['contentDetails']['relatedPlaylists']['uploads'])) {
-                            $parameters = [
-                                'playlistId'    => $channel['contentDetails']['relatedPlaylists']['uploads'],
-                                'part'          => 'snippet,contentDetails,status'
-                            ];
+                if ((int) $responseAccount['code'] === 200) {
+                    if (isset($responseAccount['data']['items'])) {
+                        $output = [];
 
-                            $responseMessages = $this->getSource()->makeRequest('playlistItems', $parameters);
+                        foreach ((array) $responseAccount['data']['items'] as $channel) {
+                            if (isset($channel['contentDetails']['relatedPlaylists']['uploads'])) {
+                                $parameters = [
+                                    'playlistId'    => $channel['contentDetails']['relatedPlaylists']['uploads'],
+                                    'part'          => 'snippet,contentDetails,status'
+                                ];
 
-                            if ((int) $responseMessages['code'] === 200) {
-                                foreach ((array) $responseMessages['data']['items'] as $data) {
-                                    $output[] = $this->getFormat($data, $channel);
+                                $responseMessages = $source->getApiData('playlistItems', $parameters);
+
+                                if ((int) $responseMessages['code'] === 200) {
+                                    foreach ((array) $responseMessages['data']['items'] as $data) {
+                                        $output[] = $this->getFormat($data, $channel);
+                                    }
                                 }
                             }
                         }
-                    }
 
-                    return $this->setResponse($responseAccount['code'], $this->getDataSort($output));
+                        return $this->setResponse($responseAccount['code'], $this->getDataSort($output));
+                    }
                 }
+
+                return $this->setResponse($responseAccount['code'], $responseAccount['message']);
             }
 
-            return $this->setResponse($responseAccount['code'], $responseAccount['message']);
-        }
+            if (strpos($criteria, '#') === 0) {
+                $parameters = [
+                    'q'             => substr($criteria, 1),
+                    'part'          => 'snippet',
+                    'maxResults'    => $limit,
+                    'type'          => 'video'
+                ];
 
-        if (strpos($criteria, '#') === 0) {
-            $parameters = [
-                'q'             => substr($criteria, 1),
-                'part'          => 'snippet',
-                'maxResults'    => $limit,
-                'type'          => 'video'
-            ];
+                $responseMessage =$source->getApiData('search', $parameters);
 
-            $responseMessage = $this->getSource()->makeRequest('search', $parameters);
+                if ((int) $responseMessage['code'] === 200) {
+                    if (isset($responseMessage['data']['items'])) {
+                        $output = [];
 
-            if ((int) $responseMessage['code'] === 200) {
-                if (isset($responseMessage['data']['items'])) {
-                    $output = [];
+                        foreach ((array) $responseMessage['data']['items'] as $message) {
+                            if (isset($message['snippet']['channelId'])) {
+                                $parameters = [
+                                    'id'    => $message['snippet']['channelId'],
+                                    'part'  => 'snippet,contentDetails,status'
+                                ];
 
-                    foreach ((array) $responseMessage['data']['items'] as $message) {
-                        if (isset($message['snippet']['channelId'])) {
-                            $parameters = [
-                                'id'    => $message['snippet']['channelId'],
-                                'part'  => 'snippet,contentDetails,status'
-                            ];
+                                $responseAccount = $source->getApiData('channels', $parameters);
 
-                            $responseAccount = $this->getSource()->makeRequest('channels', $parameters);
-
-                            if ((int) $responseAccount['code'] === 200) {
-                                foreach ((array) $responseAccount['data']['items'] as $data) {
-                                    $output[] = $this->getFormat($message, $data);
+                                if ((int) $responseAccount['code'] === 200) {
+                                    foreach ((array) $responseAccount['data']['items'] as $data) {
+                                        $output[] = $this->getFormat($message, $data);
+                                    }
                                 }
                             }
                         }
-                    }
 
-                    return $this->setResponse($responseMessage['code'], $this->getDataSort($output));
+                        return $this->setResponse($responseMessage['code'], $this->getDataSort($output));
+                    }
                 }
+
+                return $this->setResponse($responseMessage['code'], $responseMessage['message']);
+
             }
 
-            return $this->setResponse($responseMessage['code'], $responseMessage['message']);
-
+            return $this->setResponse(500, 'API criteria method not supported.');
         }
 
-        return $this->setResponse(500, 'API criteria method not supported.');
+        return $this->setResponse(500, 'API credentials not supported.');
     }
 
     /**

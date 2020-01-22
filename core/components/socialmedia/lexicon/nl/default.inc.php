@@ -34,67 +34,62 @@ $_lang['setting_socialmedia.download_image_desc']                       = 'Indie
 $_lang['setting_socialmedia.image_path']                                = 'Afbeeldingen folder';
 $_lang['setting_socialmedia.image_path_desc']                           = 'De folder waar de afbeeldingen van de social media berichten gedownload worden.';
 
-$_lang['area_socialmedia_twitter']                                      = 'Social Media Twitter';
-$_lang['setting_socialmedia.source_twitter_access_token']               = 'Twitter access token';
-$_lang['setting_socialmedia.source_twitter_access_token_desc']          = 'De Twitter access token, deze is te verkrijgen via https://dev.twitter.com/.';
-$_lang['setting_socialmedia.source_twitter_access_token_secret']        = 'Twitter access token secret';
-$_lang['setting_socialmedia.source_twitter_access_token_secret_desc']   = 'De Twitter access token secret, deze is te verkrijgen via https://dev.twitter.com/.';
-$_lang['setting_socialmedia.source_twitter_consumer_key']               = 'Twitter consumer key';
-$_lang['setting_socialmedia.source_twitter_consumer_key_desc']          = 'De Twitter consumer key, deze is te verkrijgen via https://dev.twitter.com/.';
-$_lang['setting_socialmedia.source_twitter_consumer_key_secret']        = 'Twitter consumer key secret';
-$_lang['setting_socialmedia.source_twitter_consumer_key_secret_desc']   = 'De Twitter consumer key secret, deze is te verkrijgen via https://dev.twitter.com/.';
 $_lang['setting_socialmedia.source_twitter_empty_posts']                = 'Twitter "Onbekend of leeg bericht" weergegeven.';
 $_lang['setting_socialmedia.source_twitter_empty_posts_desc']           = 'Indien ja, worden de Twitter berichten met "Onbekend of leeg bericht" weergegeven.';
-
-$_lang['area_socialmedia_facebook']                                     = 'Social Media Facebook';
-$_lang['setting_socialmedia.source_facebook_client_id']                 = 'Facebook client ID';
-$_lang['setting_socialmedia.source_facebook_client_id_desc']            = 'De Facebook client ID, deze is te verkrijgen via https://developers.facebook.com/.';
-$_lang['setting_socialmedia.source_facebook_client_secret']             = 'Facebook client secret';
-$_lang['setting_socialmedia.source_facebook_client_secret_desc']        = 'De Facebook client secret, deze is te verkrijgen via https://developers.facebook.com/.';
-$_lang['setting_socialmedia.source_facebook_access_token']              = 'Facebook access token';
-$_lang['setting_socialmedia.source_facebook_access_token_desc']         = 'De Facebook access token, deze is te verkrijgen via oAuth met de minimale scope "user_posts".';
 $_lang['setting_socialmedia.source_facebook_empty_posts']               = 'Facebook "Onbekend of leeg bericht" weergegeven.';
 $_lang['setting_socialmedia.source_facebook_empty_posts_desc']          = 'Indien ja, worden de Facebook berichten met "Onbekend of leeg bericht" weergegeven.';
-
-$_lang['area_socialmedia_instagram']                                    = 'Social Media Instagram';
-$_lang['setting_socialmedia.source_instagram_client_id']                = 'Instagram client ID';
-$_lang['setting_socialmedia.source_instagram_client_id_desc']           = 'De Instagram client ID, deze is te verkrijgen via https://www.instagram.com/developer/.';
-$_lang['setting_socialmedia.source_instagram_client_secret']            = 'Instagram client secret';
-$_lang['setting_socialmedia.source_instagram_client_secret_desc']       = 'De Instagram client secret, deze is te verkrijgen via https://www.instagram.com/developer/.';
-$_lang['setting_socialmedia.source_instagram_access_token']             = 'Instagram access token';
-$_lang['setting_socialmedia.source_instagram_access_token_desc']        = 'De Instagram access token, deze is te verkrijgen via https://instagram.pixelunion.net/.';
 $_lang['setting_socialmedia.source_instagram_empty_posts']              = 'Instagram "Onbekend of leeg bericht" weergegeven.';
 $_lang['setting_socialmedia.source_instagram_empty_posts_desc']         = 'Indien ja, worden de Instagram berichten met "Onbekend of leeg bericht" weergegeven.';
-
-$_lang['area_socialmedia_youtube']                                      = 'Social Media Youtube';
-$_lang['setting_socialmedia.source_youtube_client_id']                  = 'Youtube client ID';
-$_lang['setting_socialmedia.source_youtube_client_id_desc']             = 'De Youtube client ID, deze is te verkrijgen via https://console.developers.google.com/.';
-$_lang['setting_socialmedia.source_youtube_client_secret']              = 'Youtube client secret';
-$_lang['setting_socialmedia.source_youtube_client_secret_desc']         = 'De Youtube client secret, deze is te verkrijgen via https://console.developers.google.com/.';
-$_lang['setting_socialmedia.source_youtube_refresh_token']              = 'Youtube refresh token';
-$_lang['setting_socialmedia.source_youtube_refresh_token_desc']         = 'De Youtube refresh token, deze is te verkrijgen via oAuth met de minimale scope "https://www.googleapis.com/auth/youtube.readonly".';
 $_lang['setting_socialmedia.source_youtube_empty_posts']                = 'Youtube "Onbekend of leeg bericht" weergegeven.';
 $_lang['setting_socialmedia.source_youtube_empty_posts_desc']           = 'Indien ja, worden de Youtube berichten met "Onbekend of leeg bericht" weergegeven.';
-
-$_lang['area_socialmedia_linkedin']                                     = 'Social Media LinkedIn';
-$_lang['setting_socialmedia.source_linkedin_client_id']                 = 'LinkedIn client ID';
-$_lang['setting_socialmedia.source_linkedin_client_id_desc']            = 'De LinkedIn client ID, deze is te verkrijgen via https://www.linkedin.com/developer/.';
-$_lang['setting_socialmedia.source_linkedin_client_secret']             = 'LinkedIn client secret';
-$_lang['setting_socialmedia.source_linkedin_client_secret_desc']        = 'De LinkedIn client secret, deze is te verkrijgen via https://www.linkedin.com/developer/.';
-$_lang['setting_socialmedia.source_linkedin_access_token']              = 'LinkedIn access token';
-$_lang['setting_socialmedia.source_linkedin_access_token_desc']         = 'De LinkedIn access token, deze is te verkrijgen via oAuth met de minimale scope "rw_company_admin".';
 $_lang['setting_socialmedia.source_linkedin_empty_posts']               = 'LinkedIn "Onbekend of leeg bericht" weergegeven.';
 $_lang['setting_socialmedia.source_linkedin_empty_posts_desc']          = 'Indien ja, worden de LinkedIn berichten met "Onbekend of leeg bericht" weergegeven.';
-
-$_lang['area_socialmedia_pinterest']                                    = 'Social Media Pinterest';
-$_lang['setting_socialmedia.source_pinterest_client_id']                = 'Pinterest client ID';
-$_lang['setting_socialmedia.source_pinterest_client_id_desc']           = 'De Pinterest client ID, deze is te verkrijgen via https://developers.pinterest.com/.';
-$_lang['setting_socialmedia.source_pinterest_client_secret']            = 'Pinterest client secret';
-$_lang['setting_socialmedia.source_pinterest_client_secret_desc']       = 'De Pinterest client secret, deze is te verkrijgen via https://developers.pinterest.com/.';
-$_lang['setting_socialmedia.source_pinterest_access_token']             = 'Pinterest access token';
-$_lang['setting_socialmedia.source_pinterest_access_token_desc']        = 'De Pinterest access token, deze is te verkrijgen via oAuth met de minimale scope "read_public".';
 $_lang['setting_socialmedia.source_pinterest_empty_posts']              = 'Pinterest "Onbekend of leeg bericht" weergegeven.';
 $_lang['setting_socialmedia.source_pinterest_empty_posts_desc']         = 'Indien ja, worden de Pinterest berichten met "Onbekend of leeg bericht" weergegeven.';
+
+$_lang['socialmedia.label_twitter_access_token']                        = 'Twitter access token';
+$_lang['socialmedia.label_twitter_access_token_desc']                   = 'De Twitter access token, deze is te verkrijgen via https://dev.twitter.com/.';
+$_lang['socialmedia.label_twitter_access_token_secret']                 = 'Twitter access token secret';
+$_lang['socialmedia.label_twitter_access_token_secret_desc']            = 'De Twitter access token secret, deze is te verkrijgen via https://dev.twitter.com/.';
+$_lang['socialmedia.label_twitter_consumer_key']                        = 'Twitter consumer key';
+$_lang['socialmedia.label_twitter_consumer_key_desc']                   = 'De Twitter consumer key, deze is te verkrijgen via https://dev.twitter.com/.';
+$_lang['socialmedia.label_twitter_consumer_key_secret']                 = 'Twitter consumer key secret';
+$_lang['socialmedia.label_twitter_consumer_key_secret_desc']            = 'De Twitter consumer key secret, deze is te verkrijgen via https://dev.twitter.com/.';
+
+$_lang['socialmedia.label_facebook_client_id']                          = 'Facebook client ID';
+$_lang['socialmedia.label_facebook_client_id_desc']                     = 'De Facebook client ID, deze is te verkrijgen via https://developers.facebook.com/.';
+$_lang['socialmedia.label_facebook_client_secret']                      = 'Facebook client secret';
+$_lang['socialmedia.label_facebook_client_secret_desc']                 = 'De Facebook client secret, deze is te verkrijgen via https://developers.facebook.com/.';
+$_lang['socialmedia.label_facebook_access_token']                       = 'Facebook access token';
+$_lang['socialmedia.label_facebook_access_token_desc']                  = 'De Facebook access token, deze is te verkrijgen via oAuth met de minimale scope "user_posts".';
+
+$_lang['socialmedia.label_instagram_client_id']                         = 'Instagram client ID';
+$_lang['socialmedia.label_instagram_client_id_desc']                    = 'De Instagram client ID, deze is te verkrijgen via https://www.instagram.com/developer/.';
+$_lang['socialmedia.label_instagram_client_secret']                     = 'Instagram client secret';
+$_lang['socialmedia.label_instagram_client_secret_desc']                = 'De Instagram client secret, deze is te verkrijgen via https://www.instagram.com/developer/.';
+$_lang['socialmedia.label_instagram_access_token']                      = 'Instagram access token';
+$_lang['socialmedia.label_instagram_access_token_desc']                 = 'De Instagram access token, deze is te verkrijgen via https://instagram.pixelunion.net/.';
+
+$_lang['socialmedia.label_youtube_client_id']                           = 'Youtube client ID';
+$_lang['socialmedia.label_youtube_client_id_desc']                      = 'De Youtube client ID, deze is te verkrijgen via https://console.developers.google.com/.';
+$_lang['socialmedia.label_youtube_client_secret']                       = 'Youtube client secret';
+$_lang['socialmedia.label_youtube_client_secret_desc']                  = 'De Youtube client secret, deze is te verkrijgen via https://console.developers.google.com/.';
+$_lang['socialmedia.label_youtube_refresh_token']                       = 'Youtube refresh token';
+$_lang['socialmedia.label_youtube_refresh_token_desc']                  = 'De Youtube refresh token, deze is te verkrijgen via oAuth met de minimale scope "https://www.googleapis.com/auth/youtube.readonly".';
+
+$_lang['socialmedia.label_linkedin_client_id']                          = 'LinkedIn client ID';
+$_lang['socialmedia.label_linkedin_client_id_desc']                     = 'De LinkedIn client ID, deze is te verkrijgen via https://www.linkedin.com/developer/.';
+$_lang['socialmedia.label_linkedin_client_secret']                      = 'LinkedIn client secret';
+$_lang['socialmedia.label_linkedin_client_secret_desc']                 = 'De LinkedIn client secret, deze is te verkrijgen via https://www.linkedin.com/developer/.';
+$_lang['socialmedia.label_linkedin_access_token']                       = 'LinkedIn access token';
+$_lang['socialmedia.label_linkedin_access_token_desc']                  = 'De LinkedIn access token, deze is te verkrijgen via oAuth met de minimale scope "rw_company_admin".';
+
+$_lang['socialmedia.label_pinterest_client_id']                         = 'Pinterest client ID';
+$_lang['socialmedia.label_pinterest_client_id_desc']                    = 'De Pinterest client ID, deze is te verkrijgen via https://developers.pinterest.com/.';
+$_lang['socialmedia.label_pinterest_client_secret']                     = 'Pinterest client secret';
+$_lang['socialmedia.label_pinterest_client_secret_desc']                = 'De Pinterest client secret, deze is te verkrijgen via https://developers.pinterest.com/.';
+$_lang['socialmedia.label_pinterest_access_token']                      = 'Pinterest access token';
+$_lang['socialmedia.label_pinterest_access_token_desc']                 = 'De Pinterest access token, deze is te verkrijgen via oAuth met de minimale scope "read_public".';
 
 $_lang['socialmedia.criteria']                                          = 'Criteria';
 $_lang['socialmedia.criterias']                                         = 'Criteria';
@@ -115,6 +110,10 @@ $_lang['socialmedia.message']                                           = 'Beric
 $_lang['socialmedia.messages']                                          = 'Berichten';
 $_lang['socialmedia.messages_desc']                                     = 'Beheer hier de gesynchroniseerde berichten uit de social media kanalen. Social media kanalen zoals <span class="twitter">Twitter</span>, <span class="instagram">Instagram</span>, <span class="facebook">Facebook</span>, <span class="linkedin">LinkedIn</span> of <span class="youtube">Youtube</span> worden automatisch gesynchroniseerd met MODX.';
 $_lang['socialmedia.message_show']                                      = 'Bekijk op [[+source]]';
+$_lang['socialmedia.message_pin']                                       = 'Bericht pinnen';
+$_lang['socialmedia.message_pin_confirm']                               = 'Weet je zeker dat je dit bericht bovenaan wilt pinnen?';
+$_lang['socialmedia.message_unpin']                                     = 'Bericht unpinnen';
+$_lang['socialmedia.message_unpin_confirm']                             = 'Weet je zeker dat je dit bericht bovenaan wilt unpinnen?';
 $_lang['socialmedia.message_activate']                                  = 'Bericht weergeven';
 $_lang['socialmedia.message_activate_confirm']                          = 'Weet je zeker dat je dit bericht wilt weergeven?';
 $_lang['socialmedia.message_deactivate']                                = 'Bericht verbergen';

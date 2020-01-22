@@ -93,7 +93,7 @@ SocialMedia.grid.Criteria = function(config) {
         },
         autosave    : true,
         save_action : 'mgr/criteria/updatefromgrid',
-        fields      : ['id', 'source', 'criteria', 'active', 'createdon', 'editedon'],
+        fields      : ['id', 'source', 'criteria', 'credentials', 'active', 'createdon', 'editedon'],
         paging      : true,
         pageSize    : MODx.config.default_per_page > 30 ? MODx.config.default_per_page : 30
     });
@@ -183,7 +183,7 @@ Ext.extend(SocialMedia.grid.Criteria, MODx.grid.Grid, {
     renderSource: function(d, c, e) {
         c.css = e.json.source;
 
-        return String.format('<span class="icon icon-{0}"></span> {1}', d, Ext.util.Format.capitalize(d));
+        return '<span class="icon icon-' + d + '"></span> ' + Ext.util.Format.capitalize(d);
     },
     renderBoolean: function(d, c) {
         c.css = parseInt(d) === 1 || d ? 'green' : 'red';
@@ -205,7 +205,7 @@ SocialMedia.window.CreateCriteria = function(config) {
     config = config || {};
 
     Ext.applyIf(config, {
-        width       : 400,
+        width       : 600,
         autoHeight  : true,
         title       : _('socialmedia.criteria_create'),
         url         : SocialMedia.config.connector_url,
@@ -214,27 +214,26 @@ SocialMedia.window.CreateCriteria = function(config) {
         },
         fields      : [{
             layout      : 'column',
-            border      : false,
             defaults    : {
                 layout      : 'form',
                 labelSeparator : ''
             },
             items       : [{
-                columnWidth : .8,
+                columnWidth : .9,
                 items       : [{
-                    xtype       : 'socialmedia-combo-sources',
-                    fieldLabel  : _('socialmedia.label_criteria_source'),
-                    description : MODx.expandHelp ? '' : _('socialmedia.label_criteria_source_desc'),
-                    name        : 'source',
+                    xtype       : 'textfield',
+                    fieldLabel  : _('socialmedia.label_criteria_criteria'),
+                    description : MODx.expandHelp ? '' : _('reviews.label_criteria_criteria_desc'),
+                    name        : 'criteria',
                     anchor      : '100%',
                     allowBlank  : false
                 }, {
                     xtype       : MODx.expandHelp ? 'label' : 'hidden',
-                    html        : _('socialmedia.label_criteria_source_desc'),
+                    html        : _('socialmedia.label_criteria_criteria_desc'),
                     cls         : 'desc-under'
                 }]
             }, {
-                columnWidth : .2,
+                columnWidth : .1,
                 items       : [{
                     xtype       : 'checkbox',
                     fieldLabel  : _('socialmedia.label_criteria_active'),
@@ -248,23 +247,88 @@ SocialMedia.window.CreateCriteria = function(config) {
                 }]
             }]
         }, {
-            xtype       : 'textfield',
-            fieldLabel  : _('socialmedia.label_criteria_criteria'),
-            description : MODx.expandHelp ? '' : _('reviews.label_criteria_criteria_desc'),
-            name        : 'criteria',
+            xtype       : 'socialmedia-combo-sources',
+            fieldLabel  : _('socialmedia.label_criteria_source'),
+            description : MODx.expandHelp ? '' : _('socialmedia.label_criteria_source_desc'),
+            name        : 'source',
             anchor      : '100%',
-            allowBlank  : false
+            allowBlank  : false,
+            listeners   : {
+                select      : {
+                    fn          : this.onHandleSource,
+                    scope       : this
+                },
+                loaded      : {
+                    fn          : this.onHandleSource,
+                    scope       : this
+                }
+            }
         }, {
             xtype       : MODx.expandHelp ? 'label' : 'hidden',
-            html        : _('socialmedia.label_criteria_criteria_desc'),
+            html        : _('socialmedia.label_criteria_source_desc'),
             cls         : 'desc-under'
+        }, {
+            id          : 'social-media-source-credentials-create'
         }]
     });
 
     SocialMedia.window.CreateCriteria.superclass.constructor.call(this, config);
 };
 
-Ext.extend(SocialMedia.window.CreateCriteria, MODx.Window);
+Ext.extend(SocialMedia.window.CreateCriteria, MODx.Window, {
+    onHandleSource: function(tf) {
+        var panel   = Ext.getCmp('social-media-source-credentials-create');
+        var record  = tf.findRecord(tf.valueField, tf.getValue());
+
+        if (record) {
+            panel.removeAll();
+
+            var fields  = record.data.fields;
+            var slice   = Math.ceil(fields.length / 2);
+            var columns = [[], []];
+
+            fields.forEach((function(field, index) {
+                var value = '';
+
+                if (this.record.credentials) {
+                    value = this.record.credentials[field.name];
+                }
+
+                columns[(index + 1) <= slice ? 0 : 1].push({
+                    xtype       : 'textfield',
+                    fieldLabel  : field.label,
+                    description : MODx.expandHelp ? '' : field.description,
+                    name        : 'credentials[' + field.name + ']',
+                    anchor      : '100%',
+                    allowBlank  : false,
+                    value       : value
+                }, {
+                    xtype       : MODx.expandHelp ? 'label' : 'hidden',
+                    html        : field.description,
+                    cls         : 'desc-under'
+                });
+            }).bind(this));
+
+            panel.add({
+                layout      : 'column',
+                defaults    : {
+                    layout      : 'form',
+                    labelAlign: 'top',
+                    labelSeparator : ''
+                },
+                items       : [{
+                    columnWidth : .5,
+                    items       : columns[0]
+                }, {
+                    columnWidth : .5,
+                    items       : columns[1]
+                }]
+            });
+
+            panel.doLayout();
+        }
+    }
+});
 
 Ext.reg('socialmedia-window-criteria-create', SocialMedia.window.CreateCriteria);
 
@@ -272,7 +336,7 @@ SocialMedia.window.UpdateCriteria = function(config) {
     config = config || {};
 
     Ext.applyIf(config, {
-        width       : 400,
+        width       : 600,
         autoHeight  : true,
         title       : _('socialmedia.criteria_update'),
         url         : SocialMedia.config.connector_url,
@@ -284,27 +348,26 @@ SocialMedia.window.UpdateCriteria = function(config) {
             name        : 'id'
         }, {
             layout      : 'column',
-            border      : false,
             defaults    : {
                 layout      : 'form',
                 labelSeparator : ''
             },
             items       : [{
-                columnWidth : .8,
+                columnWidth : .9,
                 items       : [{
-                    xtype       : 'socialmedia-combo-sources',
-                    fieldLabel  : _('socialmedia.label_criteria_source'),
-                    description : MODx.expandHelp ? '' : _('socialmedia.label_criteria_source_desc'),
-                    name        : 'source',
+                    xtype       : 'textfield',
+                    fieldLabel  : _('socialmedia.label_criteria_criteria'),
+                    description : MODx.expandHelp ? '' : _('reviews.label_criteria_criteria_desc'),
+                    name        : 'criteria',
                     anchor      : '100%',
                     allowBlank  : false
                 }, {
                     xtype       : MODx.expandHelp ? 'label' : 'hidden',
-                    html        : _('socialmedia.label_criteria_source_desc'),
+                    html        : _('socialmedia.label_criteria_criteria_desc'),
                     cls         : 'desc-under'
                 }]
             }, {
-                columnWidth : .2,
+                columnWidth : .1,
                 items       : [{
                     xtype       : 'checkbox',
                     fieldLabel  : _('socialmedia.label_criteria_active'),
@@ -318,23 +381,88 @@ SocialMedia.window.UpdateCriteria = function(config) {
                 }]
             }]
         }, {
-            xtype       : 'textfield',
-            fieldLabel  : _('socialmedia.label_criteria_criteria'),
-            description : MODx.expandHelp ? '' : _('reviews.label_criteria_criteria_desc'),
-            name        : 'criteria',
+            xtype       : 'socialmedia-combo-sources',
+            fieldLabel  : _('socialmedia.label_criteria_source'),
+            description : MODx.expandHelp ? '' : _('socialmedia.label_criteria_source_desc'),
+            name        : 'source',
             anchor      : '100%',
-            allowBlank  : false
+            allowBlank  : false,
+            listeners   : {
+                select      : {
+                    fn          : this.onHandleSource,
+                    scope       : this
+                },
+                loaded      : {
+                    fn          : this.onHandleSource,
+                    scope       : this
+                }
+            }
         }, {
             xtype       : MODx.expandHelp ? 'label' : 'hidden',
-            html        : _('socialmedia.label_criteria_criteria_desc'),
+            html        : _('socialmedia.label_criteria_source_desc'),
             cls         : 'desc-under'
+        }, {
+            id          : 'social-media-source-credentials-update'
         }]
     });
 
     SocialMedia.window.UpdateCriteria.superclass.constructor.call(this, config);
 };
 
-Ext.extend(SocialMedia.window.UpdateCriteria, MODx.Window);
+Ext.extend(SocialMedia.window.UpdateCriteria, MODx.Window, {
+    onHandleSource: function(tf) {
+        var panel   = Ext.getCmp('social-media-source-credentials-update');
+        var record  = tf.findRecord(tf.valueField, tf.getValue());
+
+        if (record) {
+            panel.removeAll();
+
+            var fields  = record.data.fields;
+            var slice   = Math.ceil(fields.length / 2);
+            var columns = [[], []];
+
+            fields.forEach((function(field, index) {
+                var value = '';
+
+                if (this.record.credentials) {
+                    value = this.record.credentials[field.name];
+                }
+
+                columns[(index + 1) <= slice ? 0 : 1].push({
+                    xtype       : 'textfield',
+                    fieldLabel  : field.label,
+                    description : MODx.expandHelp ? '' : field.description,
+                    name        : 'credentials[' + field.name + ']',
+                    anchor      : '100%',
+                    allowBlank  : false,
+                    value       : value
+                }, {
+                    xtype       : MODx.expandHelp ? 'label' : 'hidden',
+                    html        : field.description,
+                    cls         : 'desc-under'
+                });
+            }).bind(this));
+
+            panel.add({
+                layout      : 'column',
+                defaults    : {
+                    layout      : 'form',
+                    labelAlign: 'top',
+                    labelSeparator : ''
+                },
+                items       : [{
+                    columnWidth : .5,
+                    items       : columns[0]
+                }, {
+                    columnWidth : .5,
+                    items       : columns[1]
+                }]
+            });
+
+            panel.doLayout();
+        }
+    }
+});
 
 Ext.reg('socialmedia-window-criteria-update', SocialMedia.window.UpdateCriteria);
 
@@ -346,9 +474,8 @@ SocialMedia.combo.Sources = function(config) {
         baseParams  : {
             action      : 'mgr/sources/getlist'
         },
-        fields      : ['type', 'label'],
+        fields      : ['type', 'label', 'fields'],
         hiddenName  : 'source',
-        pageSize    : 15,
         valueField  : 'type',
         displayField : 'label',
         tpl         : new Ext.XTemplate('<tpl for=".">' +
