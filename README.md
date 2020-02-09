@@ -74,9 +74,9 @@ Voor instagram moet je gebruik maken van de https://instagram.pixelunion.net/ in
 ## Nieuw in 2.0.0
 
 Sinds 2.0.0 word er gebruik gemaakt van criteria, deze criteria bepaald welke social media berichten worden gesynchroniseerd in de cronjob. Voorheen gingen deze 'criteria' aan de hand van systeem instellingen. De nieuwe manier van criteria kan nu bepaald worden binnen het component. Indien je de juiste rechten hebt (`socialmedia_admin`) dan heb je rechts boven in een knop `Admin weergave`.
-In deze `Admin weergave` kun je de criteria instellen per social media kanaal. Momenteel word `Twitter`, `Pinterest`, `Youtube`, `Facebook`, `Instagram` (voor hoe lang nog?) en `LinkedIn` ondersteund.
+In deze `Admin weergave` kun je de criteria instellen per social media kanaal. Momenteel word `Twitter`, `Pinterest`, `YouTube`, `Facebook`, `Instagram` (voor hoe lang nog?) en `LinkedIn` ondersteund.
 
-Een criteria kan uit bepaalde delen bestaan, een `@` of een `#`. De @ verwijst naar een gebruiker en een # naar een zoekterm. Niet alle social media API's ondersteunen deze criteria, soms kun je alleen de berichten van het gemachtigde account opgehaald worden (bijvoorbeeld Instagram). Voor sommige social media API\'s (Youtube) kun je bij voor @ een gebruikersnaam of ID invullen. Om hier onderscheid in te maken kun je dit definieren als `@ID:` of `@USERNAME:`.
+Een criteria kan uit bepaalde delen bestaan, een `@` of een `#`. De @ verwijst naar een gebruiker en een # naar een zoekterm. Niet alle social media API's ondersteunen deze criteria, soms kun je alleen de berichten van het gemachtigde account opgehaald worden (bijvoorbeeld Instagram). Voor sommige social media API\'s (YouTube) kun je bij voor @ een gebruikersnaam of ID invullen. Om hier onderscheid in te maken kun je dit definieren als `@ID:` of `@USERNAME:`.
 
 **Voorbeeld criteria**
 
