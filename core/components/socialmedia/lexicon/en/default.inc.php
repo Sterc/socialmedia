@@ -70,12 +70,12 @@ $_lang['socialmedia.label_instagram_client_secret_desc']                = 'The I
 $_lang['socialmedia.label_instagram_access_token']                      = 'Instagram access token';
 $_lang['socialmedia.label_instagram_access_token_desc']                 = 'The Instagram access token, you can get this by https://instagram.pixelunion.net/.';
 
-$_lang['socialmedia.label_youtube_client_id']                           = 'Youtube client ID';
-$_lang['socialmedia.label_youtube_client_id_desc']                      = 'The Youtube client ID, you can get this at https://console.developers.google.com/.';
-$_lang['socialmedia.label_youtube_client_secret']                       = 'Youtube client secret';
-$_lang['socialmedia.label_youtube_client_secret_desc']                  = 'The Youtube client secret, you can get this at https://console.developers.google.com/.';
-$_lang['socialmedia.label_youtube_refresh_token']                       = 'Youtube refresh token';
-$_lang['socialmedia.label_youtube_refresh_token_desc']                  = 'The Youtube refresh token, you can get this with oAuth with the minimum scope "https://www.googleapis.com/auth/youtube.readonly".';
+$_lang['socialmedia.label_youtube_client_id']                           = 'YouTube client ID';
+$_lang['socialmedia.label_youtube_client_id_desc']                      = 'The YouTube client ID, you can get this at https://console.developers.google.com/.';
+$_lang['socialmedia.label_youtube_client_secret']                       = 'YouTube client secret';
+$_lang['socialmedia.label_youtube_client_secret_desc']                  = 'The YouTube client secret, you can get this at https://console.developers.google.com/.';
+$_lang['socialmedia.label_youtube_refresh_token']                       = 'YouTube refresh token';
+$_lang['socialmedia.label_youtube_refresh_token_desc']                  = 'The YouTube refresh token, you can get this with oAuth with the minimum scope "https://www.googleapis.com/auth/youtube.readonly".';
 
 $_lang['socialmedia.label_linkedin_client_id']                          = 'LinkedIn client ID';
 $_lang['socialmedia.label_linkedin_client_id_desc']                     = 'The LinkedIn client ID, you can get this at https://www.linkedin.com/developer/.';
