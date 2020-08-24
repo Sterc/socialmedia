@@ -127,6 +127,7 @@ class SocialMediaSourceInstagram extends SocialMediaSource
                 break;
             case 'VIDEO':
                 $video = str_replace(['https:', 'http:'], '', $value['media_url']);
+                $image = str_replace(['https:', 'http:'], '', $data['thumbnail_url']);
                 break;
         }
 
@@ -143,7 +144,7 @@ class SocialMediaSourceInstagram extends SocialMediaSource
             'url'           => $data['permalink'],
             'likes'         => $likes,
             'comments'      => $comments,
-            'created'       => date('Y-m-d H:i:s', $data['timestamp'])
+            'created'       => $data['timestamp']
         ];
     }
 
