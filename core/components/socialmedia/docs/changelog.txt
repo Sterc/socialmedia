@@ -3,6 +3,11 @@ Social Media
 ----------------------
 
 ----------------------
+Version: 2.1.2
+Released: 2020-08-24
+----------------------
+- Get Instagram posts from Basic Display API
+
 Version: 2.1.0
 Released: 2020-01-22
 ----------------------

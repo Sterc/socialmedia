@@ -10,7 +10,7 @@ require_once dirname(dirname(__DIR__)) . '/socialmediasourcerequest.class.php';
 
 class Instagram extends SocialMediaSourceRequest
 {
-    const API_URL = 'https://api.instagram.com/v1/';
+    const API_URL = 'https://graph.instagram.com/';
 
     /**
      * @access public.
