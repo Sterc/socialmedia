@@ -4,6 +4,12 @@ Social Media
 
 ----------------------
 
+Version: 2.1.2
+Released: 2020-09-28
+----------------------
+- Refreshing instagram token
+----------------------
+
 Version: 2.1.1
 Released: 2020-08-24
 ----------------------

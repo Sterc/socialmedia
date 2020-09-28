@@ -35,6 +35,7 @@ class SocialMediaSourceInstagram extends SocialMediaSource
      */
     public function getData($criteria, array $credentials = [], $limit = 10)
     {
+        $criteria_field = $criteria;
         $source = $this->getSource($credentials);
 
         if ($source) {
@@ -55,6 +56,31 @@ class SocialMediaSourceInstagram extends SocialMediaSource
                 $responseMessages = $source->getApiData($criteria . '/media', $parameters);
 
                 if ((int) $responseMessages['code'] === 200) {
+                    
+                    $objToken = $this->modx->getObject('SocialMediaCriteria', ['criteria' => $criteria_field]);
+                    if ($objToken) {
+                        $cache_key = 'tokens/' . $criteria . '/expires';
+                        $expires = $this->modx->cacheManager->get($cache_key, ['cache_key' => 'socialmedia']);
+                        if (!$expires || $expires - time() < 60 * 60 * 24 * 7) {
+                            $exchangeRequest = $source->makeApiRequest('https://graph.instagram.com/refresh_access_token', [
+                                'access_token' => $credentials['access_token'],
+                                'grant_type'   => 'ig_refresh_token',
+                            ], 'GET');
+                    
+                            if ((int) $exchangeRequest['code'] === 200) {
+                                if (isset($exchangeRequest['data']['access_token'])) {
+                                    $credentials['access_token'] = $exchangeRequest['data']['access_token'];
+                                    $objToken->set('credentials', json_encode($credentials));
+                                    $objToken->save();
+                                    $expires = date('Y-m-d H:i:s', time() + (int) $exchangeRequest['data']['expires_in']);
+                                    $this->modx->cacheManager->set($cache_key, $expires, 0, ['cache_key' => 'socialmedia']);
+                                }
+                            }
+                        }
+                    } else {
+                        echo 'no obj'; die();
+                    }
+
                     if (isset($responseMessages['data']['data'])) {
                         $output = [];
 
