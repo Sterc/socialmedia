@@ -77,8 +77,6 @@ class SocialMediaSourceInstagram extends SocialMediaSource
                                 }
                             }
                         }
-                    } else {
-                        echo 'no obj'; die();
                     }
 
                     if (isset($responseMessages['data']['data'])) {
