@@ -61,7 +61,7 @@ class SocialMediaSourceInstagram extends SocialMediaSource
                     if ($objToken) {
                         $cache_key = 'tokens/' . $criteria . '/expires';
                         $expires = $this->modx->cacheManager->get($cache_key, ['cache_key' => 'socialmedia']);
-                        if (!$expires || $expires - time() < 60 * 60 * 24 * 7) {
+                        if (!$expires || (strtotime($expires) - time()) < 60 * 60 * 24 * 7) {
                             $exchangeRequest = $source->makeApiRequest('https://graph.instagram.com/refresh_access_token', [
                                 'access_token' => $credentials['access_token'],
                                 'grant_type'   => 'ig_refresh_token',
