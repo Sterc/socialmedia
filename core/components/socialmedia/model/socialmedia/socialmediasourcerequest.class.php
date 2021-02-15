@@ -148,8 +148,20 @@ class SocialMediaSourceRequest
 
             return $this->setResponse($responseInfo['http_code'], 'API returned incorrect HTTP code.');
         }
-
-        return $this->setResponse(200, json_decode($response, true));
+        
+        $output = json_decode($response, true);
+        if (isset($output['paging']['next'])) {
+            $parts = explode('?', $output['paging']['next']);
+            if (count($parts) == 2) {
+                $endpoint = array_shift($parts);
+                parse_str(array_pop($parts), $parameters);
+                $next = $this->makeApiRequest($endpoint, $parameters);
+                if (isset($next['code']) && (int) $next['code'] == 200) {
+                    $output['data'] = array_merge($output['data'], $next['data']['data']);
+                }
+            }
+        }
+        return $this->setResponse(200, $output);
     }
 
     /**
