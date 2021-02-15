@@ -35,6 +35,7 @@ class SocialMediaSourceInstagram extends SocialMediaSource
      */
     public function getData($criteria, array $credentials = [], $limit = 10)
     {
+        $criteria_field = $criteria;
         $source = $this->getSource($credentials);
 
         if ($source) {
@@ -48,12 +49,36 @@ class SocialMediaSourceInstagram extends SocialMediaSource
                 }
 
                 $parameters = [
-                    'count' => $limit
+                    'count' => $limit,
+                    'fields' => 'id,caption,media_type,media_url,permalink,thumbnail_url,username,timestamp'
                 ];
 
-                $responseMessages = $source->getApiData('users/' . $criteria . '/media/recent', $parameters);
+                $responseMessages = $source->getApiData($criteria . '/media', $parameters);
 
                 if ((int) $responseMessages['code'] === 200) {
+                    
+                    $objToken = $this->modx->getObject('SocialMediaCriteria', ['criteria' => $criteria_field]);
+                    if ($objToken) {
+                        $cache_key = 'tokens/' . $criteria . '/expires';
+                        $expires = $this->modx->cacheManager->get($cache_key, ['cache_key' => 'socialmedia']);
+                        if (!$expires || (strtotime($expires) - time()) < 60 * 60 * 24 * 7) {
+                            $exchangeRequest = $source->makeApiRequest('https://graph.instagram.com/refresh_access_token', [
+                                'access_token' => $credentials['access_token'],
+                                'grant_type'   => 'ig_refresh_token',
+                            ], 'GET');
+                    
+                            if ((int) $exchangeRequest['code'] === 200) {
+                                if (isset($exchangeRequest['data']['access_token'])) {
+                                    $credentials['access_token'] = $exchangeRequest['data']['access_token'];
+                                    $objToken->set('credentials', json_encode($credentials));
+                                    $objToken->save();
+                                    $expires = date('Y-m-d H:i:s', time() + (int) $exchangeRequest['data']['expires_in']);
+                                    $this->modx->cacheManager->set($cache_key, $expires, 0, ['cache_key' => 'socialmedia']);
+                                }
+                            }
+                        }
+                    }
+
                     if (isset($responseMessages['data']['data'])) {
                         $output = [];
 
@@ -68,6 +93,7 @@ class SocialMediaSourceInstagram extends SocialMediaSource
                 return $this->setResponse($responseMessages['code'], $responseMessages['message']);
             }
 
+            /*
             if (strpos($criteria, '#') === 0) {
                 $criteria = substr($criteria, 1);
 
@@ -91,6 +117,7 @@ class SocialMediaSourceInstagram extends SocialMediaSource
 
                 return $this->setResponse($responseMessages['code'], $responseMessages['message']);
             }
+            */
 
             return $this->setResponse(500, 'API criteria method not supported.');
         }
@@ -105,7 +132,7 @@ class SocialMediaSourceInstagram extends SocialMediaSource
      */
     private function getFormat(array $data = [])
     {
-        $userName   = $data['user']['full_name'];
+        $userName   = $data['username'];
         $userImage  = '';
         $content    = '';
         $image      = '';
@@ -113,52 +140,35 @@ class SocialMediaSourceInstagram extends SocialMediaSource
         $likes      = 0;
         $comments   = 0;
 
-        if (empty($userName)) {
-            $userName = $data['user']['username'];
+        if (isset($data['caption'])) {
+            $content = $data['caption'];
         }
 
-        if (isset($data['user']['profile_picture'])) {
-            $userImage = str_replace(['https:', 'http:'], '', $data['user']['profile_picture']);
-        }
-
-        if (isset($data['caption']['text'])) {
-            $content = $data['caption']['text'];
-        }
-
-        if (isset($data['images'])) {
-            foreach ((array) $data['images'] as $value) {
-                $image = str_replace(['https:', 'http:'], '', $value['url']);
-            }
-        }
-
-        if (isset($data['videos'])) {
-            foreach ((array) $data['videos'] as $value) {
-                $video = str_replace(['https:', 'http:'], '', $value['url']);
-            }
-        }
-
-        if (isset($data['likes']['count'])) {
-            $likes = (int) $data['likes']['count'];
-        }
-
-        if (isset($data['comments']['count'])) {
-            $comments = (int) $data['comments']['count'];
+        switch ($data['media_type']) {
+            case 'IMAGE':
+            case 'CAROUSEL_ALBUM':
+                $image = str_replace(['https:', 'http:'], '', $data['media_url']);
+                break;
+            case 'VIDEO':
+                $video = str_replace(['https:', 'http:'], '', $value['media_url']);
+                $image = str_replace(['https:', 'http:'], '', $data['thumbnail_url']);
+                break;
         }
 
         return [
             'key'           => $data['id'],
             'source'        => strtolower($this->getName()),
             'user_name'     => $this->getEmojiFormat($userName),
-            'user_account'  => $this->getEmojiFormat($data['user']['username']),
+            'user_account'  => $this->getEmojiFormat($data['username']),
             'user_image'    => $this->getImageFormat($userImage),
-            'user_url'      => 'https://www.instagram.com/' . $data['user']['username'],
+            'user_url'      => 'https://www.instagram.com/' . $data['username'],
             'content'       => $this->getEmojiFormat($content),
             'image'         => $this->getImageFormat($image),
             'video'         => $video,
-            'url'           => $data['link'],
+            'url'           => $data['permalink'],
             'likes'         => $likes,
             'comments'      => $comments,
-            'created'       => date('Y-m-d H:i:s', $data['created_time'])
+            'created'       => $data['timestamp']
         ];
     }
 

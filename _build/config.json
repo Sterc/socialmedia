@@ -3,7 +3,7 @@
     "lowCaseName": "socialmedia",
     "description": "A social media solution for MODx Revolution.",
     "author": "Sterc",
-    "version": "2.1.0-pl",
+    "version": "2.1.2-pl",
     "package":{
         "menus": [{
             "text": "socialmedia",
